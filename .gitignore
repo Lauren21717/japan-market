@@ -9,3 +9,5 @@ node_modules/
 cloudinary_python.txt
 README.md
 TESTING.md
+*.sqlite3
+*.pyc
