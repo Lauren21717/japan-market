@@ -2,26 +2,31 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-black">
-                    The new collections are here
-                </h1>
-                <div class="my-5">
-                    <h4>
-                        <a href="" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
-                    </h4>
-                </div>
+<!-- Hero Section -->
+<section class="container hero-section">
+    <div class="row g-0">
+        <!-- Left Hero -->
+        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center py-md-5 pt-4 pb-1">
+            <div class="text-content">
+                <p class="fw-light small-text">The new collection are here</p>
+                <h2 class="hero-title my-3">Shop Japan, Anywhere</h2>
+                <p class="fw-light small-text">Shop high-quality Japanese products and enjoy a piece of Japan, no matter where you are.</p>
+                <a href="" class="btn py-2 px-4 blue-btn">Shop Now</a>
             </div>
         </div>
+
+        <!-- Right Hero -->
+        <div class="col-12 col-md-6 hero-img">
+            <img src="{% static 'images/bg-image/hero.png' %}" class="img-fluid w-100 h-100 object-fit-cover" alt="Hero Image">
+        </div>
     </div>
+</section>
 {% endblock %}

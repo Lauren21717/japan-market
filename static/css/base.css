@@ -1,9 +1,13 @@
+body {
+    background: #fffaf6;
+}
+
 /* NavBar */
 .navbar-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 0;
+    padding: 1.25rem 0.5rem;
     font-weight: 500;
 }
 
@@ -36,3 +40,22 @@
     display: none;
     transition: all 0.2s east-in-out;
 }
+
+
+/* Home page */
+.blue-btn {
+    background-color: #355070;
+    color: #FAFAFA;
+}
+
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+
+    .navbar-container {
+        max-width: 80%;
+    }
+}
+
