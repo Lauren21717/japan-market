@@ -37,6 +37,8 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Base JS -->
+     <script src="{% static 'js/script.js' %}"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -63,25 +65,32 @@
         <div class="navbar-icon justify-content-end">
             <!-- Search Icon -->
             <button type="button" class="btn" onclick="toggleSearch()">
-                <i class="fas fa-search"></i>
+                <i class="fas fa-search fa-lg"></i>
             </button>
 
             <!-- Profile Icon -->
             <div class="dropdown">
                 <button class="btn dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-user fa-lg"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                    <li><a class="dropdown-item" href="#">My Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Orders</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                            <li><a class="dropdown-item" href="#">Product Management</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="#">My Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
 
             <!-- Cart Icon -->
             <a href="#" class="btn position-relative">
-                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-shopping-cart fa-lg"></i>
 
             </a>
 
@@ -89,7 +98,7 @@
             <div class="dropdown d-lg-none d-md-none">
                 <button class="btn dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars fa-lg"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="profileDropdown">
                     <li><a class="dropdown-item" href="">Home</a></li>
@@ -102,8 +111,35 @@
         </div>
     </header>
 
+    <!-- Search Bar -->
+    <div class="search-bar container" id="searchBar" >
+        <div class="border bg-light py-3">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-sm-9 col-11">
+                    <form method="GET" action="">
+                        <div class="input-group w-100 gap-2">
+                            <input class="form-control  rounded" type="text" name="q" placeholder="Search our site">
+                            <div class="input-group-append">
+                                <button class="form-control btn btn-black border rounded" type="submit">
+                                    <span class="icon">
+                                        <i class="fas fa-search "></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="col-auto d-flex align-items-center">
+                                <button class="btn btn-black border rounded" onclick="toggleSearch()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% block messages %}
-    <div class="message-container"></div>
+        <div class="message-container"></div>
     {% endblock %}
 
     {% block page_header %}
@@ -117,10 +153,7 @@
 
 
     {% block postloadjs %}
-    {{ block.super }}
-    <script>
-
-    </script>
+        {{ block.super }}
     {% endblock %}
 </body>
 
