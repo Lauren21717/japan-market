@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 body {
     background: #fffaf6;
+    font-family: 'Merriweather', sans-serif;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Libre Baskerville", sans-serif;
+}
+
+/* Global Class */
+.blue-btn {
+    background-color: #355070;
+    color: #FAFAFA;
+}
+
 
 /* NavBar */
 .navbar-container {
@@ -36,17 +49,22 @@ body {
     align-items: center;
 }
 
+
+
+/* Search Bar */
+
 #searchBar {
     display: none;
     transition: all 0.2s east-in-out;
 }
 
+.search-bar-bg {
+    background-color: #eec285;
+}
+
 
 /* Home page */
-.blue-btn {
-    background-color: #355070;
-    color: #FAFAFA;
-}
+
 
 
 @media (min-width: 1200px) {

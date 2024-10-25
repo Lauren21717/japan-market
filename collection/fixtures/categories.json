@@ -1,0 +1,34 @@
+[
+    {
+        "pk": 1,
+        "model": "collection.category",
+        "fields": {
+            "name": "pet_products",
+            "friendly_name": "Pet Products"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "collection.category",
+        "fields": {
+            "name": "skincare_beauty",
+            "friendly_name": "Skincare & Beauty"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "collection.category",
+        "fields": {
+            "name": "art_crafts",
+            "friendly_name": "Art & Crafts"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "collection.category",
+        "fields": {
+            "name": "special_offers",
+            "friendly_name": "Special Offers"
+        }
+    }
+]

@@ -1,0 +1,162 @@
+[
+    {
+        "pk": 1,
+        "model": "collection.product",
+        "fields": {
+            "name": "AIM30 Indoor Mature Cat Healthy Urinary Tract and Hairball Care Fish Flavor",
+            "description": "This is a comprehensive nutritional food that supports the health maintenance of cats, formulated with the amino acid 'A-30.' Specifically designed for indoor adult cats to maintain the health of the lower urinary tract, it regulates magnesium, phosphorus, and calcium to facilitate the gentle elimination of hairballs from the body through the inclusion of dietary fiber. Care has been taken to use fish, which is less likely to be an allergen, addressing potential food allergies.",
+            "price": 24.99,
+            "category": 1,
+            "subcategory": 1,
+            "rating": 4.8,
+            "has_sizes": true,
+            "sizes": ["1kg", "2.5kg", "5kg"],
+            "stock": 100,
+            "sku": "PET-CAT-001",
+            "image": "aim30-cat-food.png",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 2,
+        "model": "collection.product",
+        "fields": {
+            "name": "Minimalist Cat Tree - Natural Wood",
+            "description": "Modern Japanese-style cat tree made from sustainable wood. Features multiple platforms and scratching posts. Perfect for small apartments.",
+            "price": 129.99,
+            "category": 1,
+            "subcategory": 4,
+            "rating": 4.7,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 25,
+            "sku": "PET-ACC-001",
+            "image": "cat-tree.png",
+            "is_featured": false,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 3,
+        "model": "collection.product",
+        "fields": {
+            "name": "Hada Labo Gokujyun Hyaluronic Lotion",
+            "description": "Best-selling Japanese hyaluronic acid lotion that deeply hydrates skin. Alcohol-free and suitable for all skin types.",
+            "price": 19.99,
+            "category": 2,
+            "subcategory": 6,
+            "rating": 4.9,
+            "has_sizes": true,
+            "sizes": ["100ml", "170ml"],
+            "stock": 150,
+            "sku": "SKIN-FACE-001",
+            "image": "hada-labo-lotion.png",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 4,
+        "model": "collection.product",
+        "fields": {
+            "name": "Shiseido Senka Perfect Whip Cleanser",
+            "description": "Rich, creamy facial cleanser that creates a dense foam to thoroughly remove impurities while maintaining skin's moisture balance.",
+            "price": 9.99,
+            "category": 2,
+            "subcategory": 6,
+            "rating": 4.6,
+            "has_sizes": true,
+            "sizes": ["120ml"],
+            "stock": 200,
+            "sku": "SKIN-FACE-002",
+            "image": "senka-cleanser.png",
+            "is_featured": false,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 5,
+        "model": "collection.product",
+        "fields": {
+            "name": "Tombow Dual Brush Pen Set - Nature Colors",
+            "description": "Professional-quality brush pens perfect for calligraphy, illustrations, and hand lettering. Set includes 6 earth-tone colors.",
+            "price": 15.99,
+            "category": 3,
+            "subcategory": 9,
+            "rating": 4.8,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 75,
+            "sku": "ART-DRAW-001",
+            "image": "tombow-pens.png",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 6,
+        "model": "collection.product",
+        "fields": {
+            "name": "Premium Washi Paper Set - Traditional Patterns",
+            "description": "Handcrafted Japanese washi paper featuring traditional patterns. Perfect for origami and paper crafts. Set includes 50 sheets.",
+            "price": 12.99,
+            "category": 3,
+            "subcategory": 11,
+            "rating": 4.7,
+            "has_sizes": true,
+            "sizes": ["15x15cm", "20x20cm"],
+            "stock": 100,
+            "sku": "ART-ORIG-001",
+            "image": "washi-paper.png",
+            "is_featured": false,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 7,
+        "model": "collection.product",
+        "fields": {
+            "name": "&honey Melty Moist Repair Shampoo",
+            "description": "Infused with honey, propolis extract and Damask rose water, this shampoo deeply moisturizes strands for soft and healthy tresses. The formula contains keratin and arginine to repair damaged hair, as well as royal jelly extract and argan oil to restore hair shine and silkiness.",
+            "price": 29.99,
+            "category": 4,
+            "subcategory": 13,
+            "rating": 5.0,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 50,
+            "sku": "SPEC-NEW-001",
+            "image": "sakura-bath-set.png",
+            "is_featured": true,
+            "is_special_offer": true,
+            "discount_percentage": 20
+        }
+    },
+    {
+        "pk": 8,
+        "model": "collection.product",
+        "fields": {
+            "name": "Clearance - DHC Deep Cleansing Oil",
+            "description": "Popular Japanese oil cleanser that thoroughly removes makeup and impurities. Limited stock available.",
+            "price": 19.99,
+            "category": 4,
+            "subcategory": 12,
+            "rating": 4.5,
+            "has_sizes": true,
+            "sizes": ["200ml"],
+            "stock": 30,
+            "sku": "SPEC-CLR-001",
+            "image": "dhc-oil.png",
+            "is_featured": false,
+            "is_special_offer": true,
+            "discount_percentage": 30
+        }
+    }
+]

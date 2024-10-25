@@ -1,0 +1,119 @@
+[
+    {
+        "pk": 1,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "cat",
+            "friendly_name": "Cat",
+            "category": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "dog",
+            "friendly_name": "Dog",
+            "category": 1
+        }
+    },
+    {
+        "pk": 3,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "food",
+            "friendly_name": "Food",
+            "category": 1
+        }
+    },
+    {
+        "pk": 4,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "accessories",
+            "friendly_name": "Accessories",
+            "category": 1
+        }
+    },
+    {
+        "pk": 5,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "other_pet",
+            "friendly_name": "Other",
+            "category": 1
+        }
+    },
+    {
+        "pk": 6,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "facial_care",
+            "friendly_name": "Facial Care",
+            "category": 2
+        }
+    },
+    {
+        "pk": 7,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "body_care",
+            "friendly_name": "Body Care",
+            "category": 2
+        }
+    },
+    {
+        "pk": 8,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "makeup",
+            "friendly_name": "Makeup",
+            "category": 2
+        }
+    },
+    {
+        "pk": 9,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "drawing",
+            "friendly_name": "Drawing",
+            "category": 3
+        }
+    },
+    {
+        "pk": 10,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "painting",
+            "friendly_name": "Painting",
+            "category": 3
+        }
+    },
+    {
+        "pk": 11,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "origami",
+            "friendly_name": "Origami",
+            "category": 3
+        }
+    },
+    {
+        "pk": 12,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "clearance",
+            "friendly_name": "Clearance",
+            "category": 4
+        }
+    },
+    {
+        "pk": 13,
+        "model": "collection.subcategory",
+        "fields": {
+            "name": "new_arrivals",
+            "friendly_name": "New Arrivals",
+            "category": 4
+        }
+    }
+]
