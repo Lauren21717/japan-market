@@ -4,7 +4,9 @@
         "model": "collection.category",
         "fields": {
             "name": "pet_products",
-            "friendly_name": "Pet Products"
+            "friendly_name": "Pet Products",
+            "header": "Pet Essentials",
+            "description": "Find everything your pets need, from food to accessories."
         }
     },
     {
@@ -12,7 +14,9 @@
         "model": "collection.category",
         "fields": {
             "name": "skincare_beauty",
-            "friendly_name": "Skincare & Beauty"
+            "friendly_name": "Skincare & Beauty",
+            "header": "Enhance Your Glow",
+            "description": "Premium skincare products for a radiant look."
         }
     },
     {
@@ -20,7 +24,9 @@
         "model": "collection.category",
         "fields": {
             "name": "art_crafts",
-            "friendly_name": "Art & Crafts"
+            "friendly_name": "Art & Crafts",
+            "header": "Unleash Creativity",
+            "description": "Explore a variety of art and craft supplies for all ages."
         }
     },
     {
@@ -28,7 +34,9 @@
         "model": "collection.category",
         "fields": {
             "name": "special_offers",
-            "friendly_name": "Special Offers"
+            "friendly_name": "Special Offers",
+            "header": "Exclusive Deals",
+            "description": "Grab limited-time discounts on selected items."
         }
     }
 ]

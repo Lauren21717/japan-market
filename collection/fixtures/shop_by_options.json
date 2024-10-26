@@ -1,0 +1,74 @@
+[
+    {
+        "pk": 1,
+        "model": "collection.shopbyoption",
+        "fields": {
+            "name": "cat",
+            "friendly_name": "Cat",
+            "category": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "collection.shopbyoption",
+        "fields": {
+            "name": "dog",
+            "friendly_name": "Dog",
+            "category": 1
+        }
+    },
+    {
+        "pk": 3,
+        "model": "collection.shopbyoption",
+        "fields": {
+            "name": "facial_care",
+            "friendly_name": "Facial Care",
+            "category": 2
+        }
+    },
+    {
+        "pk": 4,
+        "model": "collection.shopbyoption",
+        "fields": {
+            "name": "body_care",
+            "friendly_name": "Body Care",
+            "category": 2
+        }
+    },
+    {
+        "pk": 5,
+        "model": "collection.shopbyoption",
+        "fields": {
+            "name": "tools",
+            "friendly_name": "Tools",
+            "category": 3
+        }
+    },
+    {
+        "pk": 6,
+        "model": "collection.shopbyoption",
+        "fields": {
+            "name": "decoration",
+            "friendly_name": "Decoration",
+            "category": 3
+        }
+    },
+    {
+        "pk": 7,
+        "model": "collection.shopbyoption",
+        "fields": {
+            "name": "new_arrivals",
+            "friendly_name": "New Arrivals",
+            "category": 4
+        }
+    },
+    {
+        "pk": 8,
+        "model": "collection.shopbyoption",
+        "fields": {
+            "name": "clearance",
+            "friendly_name": "Clearance",
+            "category": 4
+        }
+    }
+]

@@ -80,6 +80,21 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.5rem;
 }
 
+/* Product Page */
+.img-thumbnail {
+    cursor: pointer;
+}
+
+.overflow-auto {
+    overflow-x: auto;
+}
+
+@media (min-width: 768px) {
+    .overflow-auto {
+        overflow-y: auto;
+        height: 300px;
+    }
+}
 
 
 @media (min-width: 1200px) {
