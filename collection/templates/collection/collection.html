@@ -10,12 +10,45 @@
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+
+<!-- Product Section -->
 <section class="container">
     <div class="row">
-        <div class="col">
-            {{ products }}
+        <div class="col text-center mt-3">
+            <h2 class="logo-font">Products</h2>
+            <hr class="mb-1">
         </div>
+    </div>
+    <div class="row mt-1 mb-2"></div>
+    <div class="row product-display">
+
+        {% for product in products %}
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <a href="" class="text-decoration-none text-dark">
+                    <div class="overflow-hidden">
+                        {% if product.image %}
+                            <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
+                                alt="{{ product.name }}">
+                        {% else %}
+                            <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                        {% endif %}
+                        <p class="pt-3 pb-1 small">{{product.name}}</p>
+                        
+                        {% if product.rating %}
+                            <p class="text-muted small fw-medium">
+                                <i class="fa-solid fa-star"></i>
+                                {{ product.rating }} /5
+                            </p>
+                        {% else %}
+                            <p class="text-muted small fw-medium">No Rating</p>
+                        {% endif %}
+
+                        <p class="small fw-medium">£{{product.price}}</p>
+                        
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}

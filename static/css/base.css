@@ -67,6 +67,21 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+/* Collection page */
+.hover-scale {
+    transition: transform 0.3s east-in-out;
+}
+
+.hover-scale:hover {
+    transform: scale(1.1);
+}
+
+.product-display {
+    margin-bottom: 1.5rem;
+}
+
+
+
 @media (min-width: 1200px) {
     .container {
         max-width: 80%;
