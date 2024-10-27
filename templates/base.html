@@ -25,7 +25,9 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
     {% endblock %}
 
     {% block extra_css %}
@@ -42,7 +44,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Base JS -->
-     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -65,7 +67,6 @@
             <li><a href="">Contact</a></li>
         </ul>
 
-
         <div class="navbar-icon justify-content-end">
             <!-- Search Icon -->
             <button type="button" class="btn" onclick="toggleSearch()">
@@ -74,20 +75,19 @@
 
             <!-- Profile Icon -->
             <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                <button class="btn" type="button" id="mobileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user fa-lg"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                     {% if request.user.is_authenticated %}
-                        {% if request.user.is_superuser %}
-                            <li><a class="dropdown-item" href="#">Product Management</a></li>
-                        {% endif %}
-                        <li><a class="dropdown-item" href="#">My Profile</a></li>
-                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                    {% if request.user.is_superuser %}
+                    <li><a class="dropdown-item" href="#">Product Management</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" href="#">My Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                     {% else %}
-                        <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
-                        <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -95,13 +95,12 @@
             <!-- Cart Icon -->
             <a href="#" class="btn position-relative">
                 <i class="fas fa-shopping-cart fa-lg"></i>
-
             </a>
+
 
             <!-- Mobile Menu Icon -->
             <div class="dropdown d-md-none">
-                <button class="btn dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                <button class="btn" type="button" id="mobileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-bars fa-lg"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="profileDropdown">
@@ -111,16 +110,16 @@
                     <li><a class="dropdown-item" href="">Contact</a></li>
                 </ul>
             </div>
-            
+
         </div>
     </header>
 
     <!-- Search Bar -->
-    <div class="search-bar container" id="searchBar" >
-        <div class="border py-3 search-bar-bg">
+    <div class="search-bar border container search-bar-bg" id="searchBar">
+        <div class="py-3">
             <div class="row justify-content-center">
                 <div class="col-md-6 col-sm-9 col-11">
-                    <form method="GET" action="">
+                    <form method="GET" action="{% url 'collection' %}">
                         <div class="input-group w-100 gap-2">
                             <input class="form-control  rounded" type="text" name="q" placeholder="Search our site">
                             <div class="input-group-append">
@@ -143,7 +142,7 @@
     </div>
 
     {% block messages %}
-        <div class="message-container"></div>
+    <div class="message-container"></div>
     {% endblock %}
 
     {% block page_header %}
@@ -157,7 +156,7 @@
 
 
     {% block postloadjs %}
-        {{ block.super }}
+    {{ block.super }}
     {% endblock %}
 </body>
 

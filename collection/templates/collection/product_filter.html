@@ -1,0 +1,64 @@
+<div class="container d-lg-block search-bar-bg">
+    <nav class="py-3 border-bottom">
+        <ul class="nav justify-content-center gap-2">
+            <!-- All Products -->
+            <li class="nav-item">
+                <a class="nav-link text-dark " href="{% url 'collection' %}" >
+                    All Collections
+                </a>
+            </li>
+
+            <!-- Pet Products Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Pet Products
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?shop_by_option=cat">Cat</a></li>
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?shop_by_option=dog">Dog</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?category=pet_products">All Pet Products</a></li>
+                </ul>
+            </li>
+
+            <!-- Skincare & Beauty Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Skincare &amp; Beauty
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?shop_by_option=facial_care">Facial Care</a></li>
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?shop_by_option=body_care">Body Care</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?category=skincare_beauty">Skincare &amp; Beauty</a></li>
+                </ul>
+            </li>
+
+            <!-- Art & Craft Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Art &amp; Craft
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?shop_by_option=tools">Tools</a></li>
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?shop_by_option=decoration">Decoration</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?category=art_crafts">All Art &amp; Craft</a></li>
+                </ul>
+            </li>
+
+            <!-- Special Offers Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Special Offers
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?new_arrivals=true">New Arrivals</a></li>
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?offer=true">Offer</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'collection' %}?all_specials=true">All Specials</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>

@@ -49,7 +49,7 @@ class ProductType(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey('Category', null=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     shop_by = models.ForeignKey('ShopByOption', null=True, blank=True, on_delete=models.SET_NULL)
     product_type = models.ForeignKey('ProductType', null=True, blank=True, on_delete=models.SET_NULL) 
     name = models.CharField(max_length=254)

@@ -52,23 +52,5 @@
             "friendly_name": "Decoration",
             "category": 3
         }
-    },
-    {
-        "pk": 7,
-        "model": "collection.shopbyoption",
-        "fields": {
-            "name": "new_arrivals",
-            "friendly_name": "New Arrivals",
-            "category": 4
-        }
-    },
-    {
-        "pk": 8,
-        "model": "collection.shopbyoption",
-        "fields": {
-            "name": "clearance",
-            "friendly_name": "Clearance",
-            "category": 4
-        }
     }
 ]

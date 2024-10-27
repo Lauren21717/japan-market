@@ -11,43 +11,60 @@
 
 {% block content %}
 
+{% include 'collection/product_filter.html' %}
+
 <!-- Product Section -->
 <section class="container">
-    <div class="row">
-        <div class="col text-center mt-3">
-            <h2 class="logo-font">Products</h2>
-            <hr class="mb-1">
+    <div class="row mt-4 mb-3 align-items-center">
+        <!-- Title and Description -->
+        <div class="col-12 col-md-8">
+            <h2 class="m-0">All Collections</h2>
+            <p class="small pt-3">Browse our full range of products across various categories, from essentials to exclusive items, crafted to meet your every need.</p>
         </div>
     </div>
-    <div class="row mt-1 mb-2"></div>
+
+    <!-- Sort Dropdown -->
+    <div class="col-12 text-end">
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sort by: Relevant
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Low to High</a></li>
+                <li><a class="dropdown-item" href="#">High to Low</a></li>
+            </ul>
+        </div>
+    </div>
+    
+
     <div class="row product-display">
-
         {% for product in products %}
-            <div class="col-6 col-md-4 col-lg-3 mb-4">
-                <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-dark">
-                    <div class="overflow-hidden">
-                        {% if product.image %}
-                            <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
-                                alt="{{ product.name }}">
-                        {% else %}
-                            <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
-                        {% endif %}
-                        <p class="pt-3 pb-1 small">{{product.name}}</p>
-                        
-                        {% if product.rating %}
-                            <p class="text-muted small fw-medium">
-                                <i class="fa-solid fa-star"></i>
-                                {{ product.rating }} /5
-                            </p>
-                        {% else %}
-                            <p class="text-muted small fw-medium">No Rating</p>
-                        {% endif %}
+        <div class="col-6 col-md-4 col-lg-3 mb-4">
+            <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-dark">
+                <div class="overflow-hidden">
+                    {% if product.image %}
+                    <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
+                    {% else %}
+                    <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
+                        alt="{{ product.name }}">
+                    {% endif %}
+                    <p class="pt-3 pb-1 small">{{product.name}}</p>
 
-                        <p class="small fw-medium">£{{product.price}}</p>
-                        
-                    </div>
-                </a>
-            </div>
+                    {% if product.rating %}
+                    <p class="text-muted small fw-medium">
+                        <i class="fa-solid fa-star"></i>
+                        {{ product.rating }} /5
+                    </p>
+                    {% else %}
+                    <p class="text-muted small fw-medium">No Rating</p>
+                    {% endif %}
+
+                    <p class="small fw-medium">£{{product.price}}</p>
+
+                </div>
+            </a>
+        </div>
         {% endfor %}
     </div>
 </section>
