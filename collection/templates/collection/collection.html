@@ -18,27 +18,53 @@
     <div class="row mt-4 mb-3 align-items-center">
         <!-- Title and Description -->
         <div class="col-12 col-md-8">
-            <h2 class="m-0">All Collections</h2>
-            <p class="small pt-3">Browse our full range of products across various categories, from essentials to exclusive items, crafted to meet your every need.</p>
+            <h2 class="m-0">{{ page_header }}</h2>
+            <p class="small pt-3">{{ page_description }}</p>
         </div>
     </div>
 
     <!-- Sort Dropdown -->
     <div class="col-12 text-end pb-3">
-        <select class="form-select form-select-sm sort-select" aria-label="Sort items">
-            <option value="">Sort by...</option>
-            <option value="price_asc">Price (low to high)</option>
-            <option value="price_desc">Price (high to low)</option>
-            <option value="rating_asc">Rating (low to high)</option>
-            <option value="rating_desc">Rating (high to low)</option>
-            <option value="name_asc">Name (A-Z)</option>
-            <option value="name_desc">Name (Z-A)</option>
-            <option value="category_asc">Category (A-Z)</option>
-            <option value="category_desc">Category (Z-A)</option>
+        <select id="sort-selector" class="form-select form-select-sm sort-select" aria-label="Sort items">
+            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>
+                Sort by...
+            </option>
+
+            <!-- Price sorting options -->
+            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>
+                Price (low to high)
+            </option>
+            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>
+                Price (high to low)
+            </option>
+
+            <!-- Rating sorting options -->
+            <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>
+                Rating (low to high)
+            </option>
+            <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>
+                Rating (high to low)
+            </option>
+
+            <!-- Name sorting options -->
+            <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>
+                Name (A-Z)
+            </option>
+            <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>
+                Name (Z-A)
+            </option>
+
+            <!-- Category sorting options -->
+            <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>
+                Category (A-Z)
+            </option>
+            <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>
+                Category (Z-A)
+            </option>
         </select>
     </div>
-    
-    
+
+
 
     <div class="row product-display">
         {% for product in products %}
@@ -46,22 +72,22 @@
             <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-dark">
                 <div class="overflow-hidden">
                     {% if product.image %}
-                        <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
-                            alt="{{ product.name }}">
+                    <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
                     {% else %}
-                        <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
-                            alt="{{ product.name }}">
+                    <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
+                        alt="{{ product.name }}">
                     {% endif %}
                     <p class="pt-3 pb-1 small">{{product.name}}</p>
 
-                    
+
                     {% if product.rating %}
-                        <p class="text-muted small fw-medium">
-                            <i class="fa-solid fa-star"></i>
-                            {{ product.rating }} /5
-                        </p>
+                    <p class="text-muted small fw-medium">
+                        <i class="fa-solid fa-star"></i>
+                        {{ product.rating }} /5
+                    </p>
                     {% else %}
-                        <p class="text-muted small fw-medium">No Rating</p>
+                    <p class="text-muted small fw-medium">No Rating</p>
                     {% endif %}
 
                     <p class="small fw-medium">£{{product.price}}</p>
@@ -72,4 +98,44 @@
         {% endfor %}
     </div>
 </section>
+
+<!-- Arrow Up Button -->
+<div class="btt-button shadow-sm rounded-0 border border-dark">
+    <a href="#" class="btt-link d-flex h-100 align-items-center justify-content-center">
+        <i class="fa-solid fa-arrow-up text-dark"></i>
+    </a>	
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <!-- Credits to Boutique Ado JS -->
+    <script>
+		$('.btt-link').click(function(e) {
+			window.scrollTo(0,0)
+		})
+	</script>
+
+    <script>
+        $('#sort-selector').change(function() {
+            const selector = $(this);
+            const currentUrl = new URL(window.location);
+
+            const selectedVal = selector.val();
+            if(selectedVal != "reset") {
+                const [sort, direction] = selectedVal.split("_");
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            }
+            else {
+                currentUrl.searchParams.delete("sort");
+                currentUrl.searchParams.delete("direction");
+
+                window.location.replace(currentUrl);
+            }
+        });
+    </script>
 {% endblock %}

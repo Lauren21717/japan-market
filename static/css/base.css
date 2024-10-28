@@ -87,7 +87,6 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer !important;
 }
 
-
 /* Product Page */
 .img-thumbnail {
     cursor: pointer;
@@ -96,6 +95,20 @@ h1, h2, h3, h4, h5, h6 {
 .overflow-auto {
     overflow-x: auto;
 }
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 
 @media (min-width: 768px) {
     .overflow-auto {
