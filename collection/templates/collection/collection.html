@@ -24,17 +24,20 @@
     </div>
 
     <!-- Sort Dropdown -->
-    <div class="col-12 text-end">
-        <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Sort by: Relevant
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Low to High</a></li>
-                <li><a class="dropdown-item" href="#">High to Low</a></li>
-            </ul>
-        </div>
+    <div class="col-12 text-end pb-3">
+        <select class="form-select form-select-sm sort-select" aria-label="Sort items">
+            <option value="">Sort by...</option>
+            <option value="price_asc">Price (low to high)</option>
+            <option value="price_desc">Price (high to low)</option>
+            <option value="rating_asc">Rating (low to high)</option>
+            <option value="rating_desc">Rating (high to low)</option>
+            <option value="name_asc">Name (A-Z)</option>
+            <option value="name_desc">Name (Z-A)</option>
+            <option value="category_asc">Category (A-Z)</option>
+            <option value="category_desc">Category (Z-A)</option>
+        </select>
     </div>
+    
     
 
     <div class="row product-display">
@@ -43,21 +46,22 @@
             <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-dark">
                 <div class="overflow-hidden">
                     {% if product.image %}
-                    <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
-                        alt="{{ product.name }}">
+                        <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
+                            alt="{{ product.name }}">
                     {% else %}
-                    <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
-                        alt="{{ product.name }}">
+                        <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
+                            alt="{{ product.name }}">
                     {% endif %}
                     <p class="pt-3 pb-1 small">{{product.name}}</p>
 
+                    
                     {% if product.rating %}
-                    <p class="text-muted small fw-medium">
-                        <i class="fa-solid fa-star"></i>
-                        {{ product.rating }} /5
-                    </p>
+                        <p class="text-muted small fw-medium">
+                            <i class="fa-solid fa-star"></i>
+                            {{ product.rating }} /5
+                        </p>
                     {% else %}
-                    <p class="text-muted small fw-medium">No Rating</p>
+                        <p class="text-muted small fw-medium">No Rating</p>
                     {% endif %}
 
                     <p class="small fw-medium">£{{product.price}}</p>

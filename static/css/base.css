@@ -80,6 +80,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.5rem;
 }
 
+.sort-select {
+    width: auto !important;
+    display: inline-block !important;
+    min-width: 200px !important;
+    cursor: pointer !important;
+}
+
+
 /* Product Page */
 .img-thumbnail {
     cursor: pointer;

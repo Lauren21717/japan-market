@@ -12,8 +12,32 @@ def collection(request):
     query = None
     categories = None
     shop_by_options = None
+    sort = None
+    direction = None
 
     if request.GET:
+        # Sorting
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            
+            # Handling sorting by different fields
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+            elif sortkey == 'category':
+                sortkey = 'category__name'
+            elif sortkey == 'shop_by_option':
+                sortkey = 'shop_by__name'
+                
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+                    
+            products = products.order_by(sortkey)
+            
+        
         # Search Query
         if 'q' in request.GET:
             query = request.GET['q']
@@ -47,12 +71,15 @@ def collection(request):
         # All Specials (Both Special Offer and Featured Products)
         if 'all_specials' in request.GET:
             products = products.filter(Q(is_special_offer=True) | Q(is_featured=True))
+
+    current_sorting = f'{sort}_{direction}'
     
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
         'current_shop_by_options': shop_by_options,
+        'current_sorting': current_sorting,
     }
     
     return render(request, 'collection/collection.html', context)
