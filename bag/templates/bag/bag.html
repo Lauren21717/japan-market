@@ -10,8 +10,28 @@
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+<!-- Cart Section -->
 <section class="container">
-    
+    <div class="row mt-4 mb-3 align-items-center">
+        <div class="col-12 col-md-8">
+            <h2>Shopping Bag</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {% if bag_items %}
+            {% else %}
+                <p class="small pt-1">Your bag is currently empty. Please visit our collection page to browse and discover products you'll love!</p>
+                <a href="{% url 'collection' %}" class="btn blue-btn rounded-full mt-2 py-2 px-4">
+                    <span class="icon">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </span>
+                    <span>Keep Shopping</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
 </section>
 {% endblock %}
