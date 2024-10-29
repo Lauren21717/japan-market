@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -34,7 +35,7 @@
                          <div class="col-8 col-md-4">
                             <p class="fe-bold mb-1">{{ item.product.name }}</p>
                             <p class="text-muted small mb-1">SKU: {{ item.product.sku|upper }}</p>
-                            <p class="fw-bold">${{ item.product.price }}</p>
+                            <p class="fw-bold">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                             {% if item.size %}
                                 <p class="small rounded">Size: {{item.size}}</p>
                             {% endif %}
@@ -86,7 +87,8 @@
                                 <i class="fa-solid fa-pen-to-square fa-sm"></i>
                             </a>
 
-                            <a class="remove-item btn btn-sm rose-btn" title="Remove item" id="remove_{{ item.item_id }}">
+                            <a class="remove-item btn btn-sm rose-btn" title="Remove item" 
+                                id="remove_{{ item.item_id }}" data-product_size=""{{ item.size }}>
                                 <i class="fa-solid fa-trash fa-sm"></i>
                             </a>
                         </div>
