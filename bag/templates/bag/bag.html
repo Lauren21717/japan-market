@@ -21,7 +21,73 @@
     <div class="row">
         <div class="col">
             {% if bag_items %}
-            {{ bag_items }} {{ total }}
+                <!-- Shopping Cart Items -->
+                <div class="cart-container">
+                    {% for item in bag_items %}
+                    <div class="row border-top cart-item mb-4 py-3">
+                        <!-- Product Image -->
+                         <div class="col-4 col-md-2">
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid rounded">
+                         </div>
+
+                        <!-- Product Info -->
+                         <div class="col-8 col-md-4">
+                            <p class="fe-bold mb-1">{{ item.product.name }}</p>
+                            <p class="text-muted small mb-1">SKU: {{ item.product.sku|upper }}</p>
+                            <p class="fw-bold">${{ item.product.price }}</p>
+                            <p class="small rounded">Size: {{item.size}}</p>
+                         </div>
+
+                        <!-- Quantity Input and Remove Button -->
+                         <div class="col-6 col-md-3 d-flex align-items-center mt-2 mt-md-0">
+                            <input 
+                                type="number" 
+                                class="form-control" 
+                                min="1" 
+                                max="99" 
+                                value="{{ item.quantity }}" 
+                                id="quantity_{{ item.product.id }}">
+                         </div>
+
+                        <!-- Remove Button -->
+                        <div class="col-6 col-md-3 d-flex justify-content-end align-items-center mt-2 mt-md-0">
+                            <button class="btn btn-sm rose-btn py-2 px-3" >
+                                <i class="fa-solid fa-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Cart Total -->
+                <div class="text-end mt-5 border-top pt-4">
+                    <h6><strong>Bag Total: ${{total|floatformat:2}}</strong></h6>
+                    <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+                    <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
+                
+                    {% if free_delivery_delta > 0 %}
+                    <p class="text-danger">
+                        Spend <strong>${{ free_delivery_delta }}</strong> more to get free delivery!
+                    </p>
+                    {% endif %}
+                </div>
+
+                <!-- Buttons -->
+                 <div class="text-end py-2">
+                    <a href="{% url 'collection' %}" class="btn rose-btn rounded-full mt-2 py-2 px-4">
+                        <span class="icon">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </span>
+                        <span>Keep Shopping</span>
+                    </a>
+                    <a href="{% url 'collection' %}" class="btn blue-btn rounded-full mt-2 py-2 px-4">
+                        <span class="icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <span>Secure Checkout</span>
+                    </a>
+                 </div>
+
             {% else %}
                 <p class="small pt-1">Your bag is currently empty. Please visit our collection page to browse and discover products you'll love!</p>
                 <a href="{% url 'collection' %}" class="btn blue-btn rounded-full mt-2 py-2 px-4">
