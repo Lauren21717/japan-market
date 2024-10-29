@@ -21,6 +21,9 @@
     <div class="row">
         <div class="col">
             {% if bag_items %}
+            {{bag_items}}
+            <br><br>
+            {{request.session.bag}}
                 <!-- Shopping Cart Items -->
                 <div class="cart-container">
                     {% for item in bag_items %}
