@@ -21,6 +21,7 @@
     <div class="row">
         <div class="col">
             {% if bag_items %}
+            {{ bag_items }} {{ total }}
             {% else %}
                 <p class="small pt-1">Your bag is currently empty. Please visit our collection page to browse and discover products you'll love!</p>
                 <a href="{% url 'collection' %}" class="btn blue-btn rounded-full mt-2 py-2 px-4">
