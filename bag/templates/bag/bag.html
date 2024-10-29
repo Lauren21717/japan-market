@@ -42,7 +42,7 @@
 
                         <!-- Quantity Input and Remove Button -->
                         <div class="col-6 col-md-3 d-flex align-items-center mt-2 mt-md-0">
-                            <form class="form update-form" method="POST" action="">
+                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                                 {% csrf_token %}
                                 <div class="input-group input-group-{{ item.item_id }}">
                                     <!-- Decrement Button -->
@@ -78,16 +78,15 @@
                                     {% endif %}
                                 </div>
                             </form>
-
                         </div>
 
                         <!-- Remove Button -->
                         <div class="col-6 col-md-3 d-flex gap-2 justify-content-end align-items-center mt-2 mt-md-0">
-                            <a class="btn btn-sm yellow-btn" title="Edit item">
+                            <a class="update-link btn btn-sm yellow-btn" title="Edit item">
                                 <i class="fa-solid fa-pen-to-square fa-sm"></i>
                             </a>
 
-                            <a class="btn btn-sm rose-btn" title="Remove item">
+                            <a class="remove-item btn btn-sm rose-btn" title="Remove item" id="remove_{{ item.item_id }}">
                                 <i class="fa-solid fa-trash fa-sm"></i>
                             </a>
                         </div>
@@ -144,6 +143,31 @@
 {{ block.super }}
 {% include 'collection/includes/quantity_input_script.html' %}
 
+<script>
+    $(document).ready(() => {
+        //Update quantity on click
+        $('.update-link').on('click', (e) => {
+            e.preventDefault();
+            const form = $(e.currentTarget).closest('.cart-item').find('.update-form');
+            form.submit();
+        });
 
+        // Remove item and reload on click
+        $('.remove-item').on('click', (e) => {
+            e.preventDefault();
+            const csrfToken = "{{ csrf_token }}";
+            const itemId = $(e.currentTarget).attr('id').split('remove_')[1];
+            const size = $(e.currentTarget).data('product_size');
+            const url = `/bag/remove/${itemId}/`;
+            const data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size };
+
+            $.post(url, data)
+                .done(() => {
+                    location.reload();
+                });
+        });
+    });
+    
+</script>
 
 {% endblock %}
