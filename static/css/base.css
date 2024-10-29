@@ -29,6 +29,16 @@ h1, h2, h3, h4, h5, h6 {
     color: #FAFAFA;
 }
 
+.yellow-btn {
+    background-color: #eec285;
+    color: #000000;
+}
+
+.yellow-btn:hover {
+    background-color: #b59466;
+    color: #000000;
+}
+
 .icon {
     align-items: center;
     display: inline-flex;
@@ -133,8 +143,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Shopping Bag Page */
-
-
 .cart-item-img {
     max-width: 80px;
 }

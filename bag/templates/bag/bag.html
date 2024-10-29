@@ -21,9 +21,6 @@
     <div class="row">
         <div class="col">
             {% if bag_items %}
-            {{bag_items}}
-            <br><br>
-            {{request.session.bag}}
                 <!-- Shopping Cart Items -->
                 <div class="cart-container">
                     {% for item in bag_items %}
@@ -45,39 +42,54 @@
 
                         <!-- Quantity Input and Remove Button -->
                         <div class="col-6 col-md-3 d-flex align-items-center mt-2 mt-md-0">
-                            <div class="input-group input-group-{{ item.item_id }}">
-                                <button class="decrement-qty btn blue-btn rounded-0 decrement-qty_{{ item.item_id }}"
-                                    data-item_id="{{ item.item_id }}"
-                                    {% if item.size %}data-size="{{ item.size }}"{% endif %}>
-                                    <div class="icon">
-                                        <i class="fa-solid fa-minus"></i>
-                                    </div>
-                                </button>
+                            <form class="form update-form" method="POST" action="">
+                                {% csrf_token %}
+                                <div class="input-group input-group-{{ item.item_id }}">
+                                    <!-- Decrement Button -->
+                                    <button class="decrement-qty btn blue-btn btn-sm rounded-0 decrement-qty_{{ item.item_id }}"
+                                        data-item_id="{{ item.item_id }}"
+                                        {% if item.size %}data-size="{{ item.size }}"{% endif %}>
+                                        <div>
+                                            <i class="fa-solid fa-minus fa-sm"></i>
+                                        </div>
+                                    </button>
+    
+                                    <!-- Quantity Input -->
+                                    <input class="form-control form-control-sm qty_input" type="number"
+                                        name="quantity"
+                                        value="{{ item.quantity }}"
+                                        min="1"
+                                        max="99"
+                                        data-item_id="{{ item.item_id }}"
+                                        id="id_qty_{{ item.item_id }}"
+                                        {% if item.size %}data-size="{{ item.size }}"{% endif %}>
+    
+                                    <!-- Increment Button -->
+                                    <button class="increment-qty btn blue-btn btn-sm rounded-0 increment-qty_{{ item.item_id }}"
+                                        data-item_id="{{ item.item_id }}"
+                                        {% if item.size %}data-size="{{ item.size }}"{% endif %}>
+                                        <div>
+                                            <i class="fa-solid fa-plus fa-sm"></i>
+                                        </div>
+                                    </button>
 
-                                <input class="form-control qty_input" type="number"
-                                    name="quantity"
-                                    value="{{ item.quantity }}"
-                                    min="1"
-                                    max="99"
-                                    data-item_id="{{ item.item_id }}"
-                                    id="id_qty_{{ item.item_id }}"
-                                    {% if item.size %}data-size="{{ item.size }}"{% endif %}>
+                                    {% if item.product.has_sizes %}
+                                        <input type="hidden" name="product_size" value="{{ item.size }}">
+                                    {% endif %}
+                                </div>
+                            </form>
 
-                                <button class="increment-qty btn blue-btn rounded-0 increment-qty_{{ item.item_id }}"
-                                    data-item_id="{{ item.item_id }}"
-                                    {% if item.size %}data-size="{{ item.size }}"{% endif %}>
-                                    <div class="icon">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </div>
-                                </button>
-                            </div>
                         </div>
 
                         <!-- Remove Button -->
-                        <div class="col-6 col-md-3 d-flex justify-content-end align-items-center mt-2 mt-md-0">
-                            <button class="btn btn-sm rose-btn py-2 px-3" >
-                                <i class="fa-solid fa-trash"></i> Remove
-                            </button>
+                        <div class="col-6 col-md-3 d-flex gap-2 justify-content-end align-items-center mt-2 mt-md-0">
+                            <a class="btn btn-sm yellow-btn" title="Edit item">
+                                <i class="fa-solid fa-pen-to-square fa-sm"></i>
+                            </a>
+
+                            <a class="btn btn-sm rose-btn" title="Remove item">
+                                <i class="fa-solid fa-trash fa-sm"></i>
+                            </a>
                         </div>
                     </div>
                     {% endfor %}
@@ -128,3 +140,10 @@
 </section>
 {% endblock %}
 
+{% block postloadjs %}
+{{ block.super }}
+{% include 'collection/includes/quantity_input_script.html' %}
+
+
+
+{% endblock %}
