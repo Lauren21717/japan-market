@@ -14,6 +14,21 @@ h1, h2, h3, h4, h5, h6 {
     color: #FAFAFA;
 }
 
+.blue-btn:hover {
+    background-color: #213247;
+    color: #FAFAFA;
+}
+
+.rose-btn {
+    background-color: #B25A61;
+    color: #FAFAFA;
+}
+
+.rose-btn:hover {
+    background-color: #69353a;
+    color: #FAFAFA;
+}
+
 .icon {
     align-items: center;
     display: inline-flex;
