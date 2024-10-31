@@ -142,7 +142,11 @@
     </div>
 
     {% block messages %}
-    <div class="message-container"></div>
+    <div class="message-container">
+        {% for message in messages %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% endfor %}
+    </div>
     {% endblock %}
 
     {% block page_header %}
@@ -157,6 +161,11 @@
 
     {% block postloadjs %}
     {{ block.super }}
+    <script>
+        $(document).ready(function () {
+            $('.toast').toast('show');
+        });
+    </script>
     {% endblock %}
 </body>
 
