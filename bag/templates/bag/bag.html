@@ -22,121 +22,118 @@
     <div class="row">
         <div class="col">
             {% if bag_items %}
-            <!-- Shopping Cart Items -->
-            <div class="cart-container">
-                {% for item in bag_items %}
-                <div class="row border-top cart-item mb-4 py-3">
-                    <!-- Product Image -->
-                    <div class="col-4 col-md-2">
-                        {% if item.product.image %}
+                <!-- Shopping Cart Items -->
+                <div class="cart-container">
+                    {% for item in bag_items %}
+                    <div class="row border-top cart-item mb-4 py-3">
+                        <!-- Product Image -->
+                         <div class="col-4 col-md-2">
                             <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid rounded">
-                        {% else %}
-                            <img src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}" class="img-fluid rounded">
-                        {% endif %}
+                         </div>
+
+                        <!-- Product Info -->
+                         <div class="col-8 col-md-4">
+                            <p class="fe-bold mb-1">{{ item.product.name }}</p>
+                            <p class="text-muted small mb-1">SKU: {{ item.product.sku|upper }}</p>
+                            <p class="fw-bold">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            {% if item.size %}
+                                <p class="small rounded">Size: {{item.size}}</p>
+                            {% endif %}
+                         </div>
+
+                        <!-- Quantity Input and Remove Button -->
+                        <div class="col-6 col-md-3 d-flex align-items-center mt-2 mt-md-0">
+                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
+                                {% csrf_token %}
+                                <div class="input-group input-group-{{ item.item_id }}">
+                                    <!-- Decrement Button -->
+                                    <button class="decrement-qty btn blue-btn btn-sm rounded-0 decrement-qty_{{ item.item_id }}"
+                                        data-item_id="{{ item.item_id }}"
+                                        {% if item.size %}data-size="{{ item.size }}"{% endif %}>
+                                        <div>
+                                            <i class="fa-solid fa-minus fa-sm"></i>
+                                        </div>
+                                    </button>
+    
+                                    <!-- Quantity Input -->
+                                    <input class="form-control form-control-sm qty_input" type="number"
+                                        name="quantity"
+                                        value="{{ item.quantity }}"
+                                        min="1"
+                                        max="99"
+                                        data-item_id="{{ item.item_id }}"
+                                        id="id_qty_{{ item.item_id }}"
+                                        {% if item.size %}data-size="{{ item.size }}"{% endif %}>
+    
+                                    <!-- Increment Button -->
+                                    <button class="increment-qty btn blue-btn btn-sm rounded-0 increment-qty_{{ item.item_id }}"
+                                        data-item_id="{{ item.item_id }}"
+                                        {% if item.size %}data-size="{{ item.size }}"{% endif %}>
+                                        <div>
+                                            <i class="fa-solid fa-plus fa-sm"></i>
+                                        </div>
+                                    </button>
+
+                                    {% if item.product.has_sizes %}
+                                        <input type="hidden" name="product_size" value="{{ item.size }}">
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Remove Button -->
+                        <div class="col-6 col-md-3 d-flex gap-2 justify-content-end align-items-center mt-2 mt-md-0">
+                            <a class="update-link btn btn-sm yellow-btn" title="Edit item">
+                                <i class="fa-solid fa-pen-to-square fa-sm"></i>
+                            </a>
+
+                            <a class="remove-item btn btn-sm rose-btn" title="Remove item" 
+                                id="remove_{{ item.item_id }}" data-product_size=""{{ item.size }}>
+                                <i class="fa-solid fa-trash fa-sm"></i>
+                            </a>
+                        </div>
                     </div>
-
-                    <!-- Product Info -->
-                    <div class="col-8 col-md-4">
-                        <p class="fe-bold mb-1">{{ item.product.name }}</p>
-                        <p class="text-muted small mb-1">SKU: {{ item.product.sku|upper }}</p>
-                        <p class="fw-bold">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                        {% if item.size %}
-                        <p class="small rounded">Size: {{item.size}}</p>
-                        {% endif %}
-                    </div>
-
-                    <!-- Quantity Input and Remove Button -->
-                    <div class="col-6 col-md-3 d-flex align-items-center mt-2 mt-md-0">
-                        <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
-                            {% csrf_token %}
-                            <div class="input-group input-group-{{ item.item_id }}">
-                                <!-- Decrement Button -->
-                                <button
-                                    class="decrement-qty btn blue-btn btn-sm rounded-0 decrement-qty_{{ item.item_id }}"
-                                    data-item_id="{{ item.item_id }}" {% if item.size %}data-size="{{ item.size }}" {%
-                                    endif %}>
-                                    <div>
-                                        <i class="fa-solid fa-minus fa-sm"></i>
-                                    </div>
-                                </button>
-
-                                <!-- Quantity Input -->
-                                <input class="form-control form-control-sm qty_input" type="number" name="quantity"
-                                    value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
-                                    id="id_qty_{{ item.item_id }}" {% if item.size %}data-size="{{ item.size }}" {%
-                                    endif %}>
-
-                                <!-- Increment Button -->
-                                <button
-                                    class="increment-qty btn blue-btn btn-sm rounded-0 increment-qty_{{ item.item_id }}"
-                                    data-item_id="{{ item.item_id }}" {% if item.size %}data-size="{{ item.size }}" {%
-                                    endif %}>
-                                    <div>
-                                        <i class="fa-solid fa-plus fa-sm"></i>
-                                    </div>
-                                </button>
-
-                                {% if item.product.has_sizes %}
-                                <input type="hidden" name="product_size" value="{{ item.size }}">
-                                {% endif %}
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Remove Button -->
-                    <div class="col-6 col-md-3 d-flex gap-2 justify-content-end align-items-center mt-2 mt-md-0">
-                        <a class="update-link btn btn-sm yellow-btn" title="Edit item">
-                            <i class="fa-solid fa-pen-to-square fa-sm"></i>
-                        </a>
-
-                        <a class="remove-item btn btn-sm rose-btn" title="Remove item" id="remove_{{ item.item_id }}"
-                            data-product_size="" {{ item.size }}>
-                            <i class="fa-solid fa-trash fa-sm"></i>
-                        </a>
-                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
 
-            <!-- Cart Total -->
-            <div class="text-end mt-5 border-top pt-4">
-                <h6><strong>Bag Total: ${{total|floatformat:2}}</strong></h6>
-                <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
-                <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
+                <!-- Cart Total -->
+                <div class="text-end mt-5 border-top pt-4">
+                    <h6><strong>Bag Total: £{{total|floatformat:2}}</strong></h6>
+                    <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                    <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                
+                    {% if free_delivery_delta > 0 %}
+                    <p class="text-danger">
+                        Spend <strong>£{{ free_delivery_delta }}</strong> more to get free delivery!
+                    </p>
+                    {% endif %}
+                </div>
 
-                {% if free_delivery_delta > 0 %}
-                <p class="text-danger">
-                    Spend <strong>${{ free_delivery_delta }}</strong> more to get free delivery!
-                </p>
-                {% endif %}
-            </div>
+                <!-- Buttons -->
+                 <div class="text-end py-2">
+                    <a href="{% url 'collection' %}" class="btn rose-btn rounded-full mt-2 py-2 px-4">
+                        <span class="icon">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </span>
+                        <span>Keep Shopping</span>
+                    </a>
+                    <a href="{% url 'checkout' %}" class="btn blue-btn rounded-full mt-2 py-2 px-4">
+                        <span class="icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <span>Secure Checkout</span>
+                    </a>
+                 </div>
 
-            <!-- Buttons -->
-            <div class="text-end py-2">
-                <a href="{% url 'collection' %}" class="btn rose-btn rounded-full mt-2 py-2 px-4">
+            {% else %}
+                <!-- Empty Bag -->
+                <p class="small pt-1">Your bag is currently empty. Please visit our collection page to browse and discover products you'll love!</p>
+                <a href="{% url 'collection' %}" class="btn blue-btn rounded-full mt-2 py-2 px-4">
                     <span class="icon">
                         <i class="fa-solid fa-chevron-left"></i>
                     </span>
                     <span>Keep Shopping</span>
                 </a>
-                <a href="{% url 'checkout' %}" class="btn blue-btn rounded-full mt-2 py-2 px-4">
-                    <span class="icon">
-                        <i class="fa-solid fa-lock"></i>
-                    </span>
-                    <span>Secure Checkout</span>
-                </a>
-            </div>
-
-            {% else %}
-            <!-- Empty Bag -->
-            <p class="small pt-1">Your bag is currently empty. Please visit our collection page to browse and discover
-                products you'll love!</p>
-            <a href="{% url 'collection' %}" class="btn blue-btn rounded-full mt-2 py-2 px-4">
-                <span class="icon">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </span>
-                <span>Keep Shopping</span>
-            </a>
             {% endif %}
         </div>
     </div>
@@ -164,7 +161,7 @@
             const itemId = $(e.currentTarget).attr('id').split('remove_')[1];
             const size = $(e.currentTarget).data('product_size');
             const url = `/bag/remove/${itemId}/`;
-            const data = { 'csrfmiddlewaretoken': csrfToken, 'product_size': size };
+            const data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size };
 
             $.post(url, data)
                 .done(() => {
@@ -172,7 +169,7 @@
                 });
         });
     });
-
+    
 </script>
 
 {% endblock %}
