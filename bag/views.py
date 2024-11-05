@@ -19,6 +19,14 @@ def add_to_bag(request, item_id):
     size = request.POST.get('product_size', None)
     bag = request.session.get('bag', {})
 
+    if product.has_sizes and not size:
+        messages.error(
+            request,
+            'Please select a size before adding to bag',
+            extra_tags='error'
+        )
+        return redirect(redirect_url)
+    
     if size:
         if item_id in bag and isinstance(bag[item_id], int):
             bag[item_id] = {'items_by_size': {}}

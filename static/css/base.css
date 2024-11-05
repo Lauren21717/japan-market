@@ -16,7 +16,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .blue-btn:hover,
 .blue-btn:active,
-.blue-btn:focus {
+.blue-btn:focus,
+.btn-check:checked + .blue-btn {
     background-color: #213247;
     color: #FAFAFA;
 }
@@ -28,7 +29,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .rose-btn:hover,
 .rose-btn:active,
-.rose-btn:focus {
+.rose-btn:focus,
+.btn-check:checked + .rose-btn {
     background-color: #69353a;
     color: #FAFAFA;
 }
@@ -40,7 +42,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .yellow-btn:hover,
 .yellow-btn:active,
-.yellow-btn:focus {
+.yellow-btn:focus,
+.btn-check:checked + .yellow-btn {
     background-color: #b59466;
     color: #000000;
 }
