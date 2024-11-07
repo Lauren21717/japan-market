@@ -16,19 +16,144 @@
 {% block content %}
 <!-- Checkout Success Section -->
 <section class="container">
-    <!-- Message -->
+    <!-- Header Section -->
     <div class="row mt-4 mb-3 align-items-center">
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-lg-8 mx-auto">
             <h2>Thank You</h2>
+            <p class="text-muted">
+                Your order information is below. A confirmation email will be sent to
+                <strong class="fw-bold">{{ order.email }}</strong>
+            </p>
         </div>
-        <p class="text-muted">
-            Your order information is below. A confirmation email will be sent to
-            <strong>{{ order.email }}</strong>
-        </p>
+        
     </div>
 
+    <!-- Main Content -->
     <div class="row">
+        <div class="col-12 col-lg-8 mx-auto">
+            <div class="order-confirmation-wrapper rounded-3 shadow-sm border p-3">
+                <!-- Order Info -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase mb-2 pb-2 border-bottom">Order Info:</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">Order Number</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="fw-semibold order-number">{{ order.order_number }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">Order Date</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="fw-semibold">{{ order.date }}</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Order Items -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase mb-2 pb-2 border-bottom">Order Details:</h6>
+                    {% for item in order.lineitems.all %}
+                    <div class="row">
+                        <div class="col-12 col-md-8">
+                            <p class="mb-0 fw-semibold">
+                                {{ item.product.name }}{% if item.product_size %} - Size {{ item.product_size|upper }}{% endif %}
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-4 text-end">
+                            <p class="mb-0">{{ item.quantity }} @ £{{ item.product.price }} each</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Delivery Info -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase mb-2 pb-2 border-bottom">Delivery Address</h6>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">Full Name</p>
+                            <p class="fw-semibold">{{ order.full_name }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">Phone</p>
+                            <p class="fw-semibold">{{ order.phone_number }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">Address 1</p>
+                            <p class="fw-semibold">{{ order.street_address1 }}</p>
+                        </div>
+                        {% if order.street_address2 %}
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">Address 2</p>
+                            <p class="fw-semibold">{{ order.street_address2 }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">Town/City</p>
+                            <p class="fw-semibold">{{ order.town_or_city }}</p>
+                        </div>
+                        {% if order.county %}
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">County</p>
+                            <p class="fw-semibold">{{ order.county }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">Country</p>
+                            <p class="fw-semibold">{{ order.country }}</p>
+                        </div>
+                        {% if order.postcode %}
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted small">Postcode</p>
+                            <p class="fw-semibold">{{ order.postcode }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Billing Summary -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase mb-2 pb-2 border-bottom">Billing Summary:</h6>
+                    <div class="p-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted fw-semi-bold">Order Total</span>
+                            <span>£{{ order.order_total }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted fw-semi-bold">Delivery</span>
+                            <span>£{{ order.delivery_cost }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted fw-semi-bold">Grand Total</span>
+                            <span class="fs-3 fw-bold">£{{ order.grand_total }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="text-end border-top pt-4">
+                    <a  href="{% url 'collection' %}?all_specials=true" 
+                            class="btn rose-btn">
+                            <i class="fa-solid fa-gifts me-2"></i>
+                        Check Out Latest Deals
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
