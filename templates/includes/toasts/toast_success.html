@@ -22,7 +22,7 @@
         <div class="toast-body bg-white px-4">
             <p class="text-muted mb-3">{{ message }}</p>
 
-            {% if grand_total %}
+            {% if grand_total and not on_profile_page %}
             <!-- Cart Item -->
             <div class="cart-items-container custom-scrollbar">
                 {% for item in bag_items %}
