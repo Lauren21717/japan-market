@@ -145,13 +145,23 @@
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="text-end border-top pt-4">
-                    <a  href="{% url 'collection' %}?all_specials=true" 
-                            class="btn rose-btn">
-                            <i class="fa-solid fa-gifts me-2"></i>
-                        Check Out Latest Deals
-                    </a>
-                </div>
+                {% if from_profile %}
+                    <div class="text-end border-top pt-4"></div>
+                        <a  href="{% url 'profile' %}" 
+                                class="btn rose-btn">
+                            <i class="fa-solid fa-angles-left me-2"></i>
+                            Back to Profile
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="text-end border-top pt-4">
+                        <a  href="{% url 'collection' %}?all_specials=true" 
+                                class="btn rose-btn">
+                                <i class="fa-solid fa-gifts me-2"></i>
+                            Check Out Latest Deals
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
