@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container d-flex align-items-center justify-content-center mt-4">
+    <div class="p-4" style="max-width: 500px; width: 100%;">
+        {% block auth_content %}{% endblock %}
+    </div>
+</section>
+{% endblock %}
