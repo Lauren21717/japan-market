@@ -28,7 +28,11 @@
                 {% for item in bag_items %}
                     <div class="cart-item d-flex align-items-center gap-3 mb-3">
                         <div class="cart-item-image">
-                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="rounded">
+                            {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="rounded">
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}" class="rounded">
+                            {% endif %}
                         </div>
                         <div class="cart-item-details flex-grow-1">
                             <h6 class="mb-0">{{ item.product.name }}</h6>

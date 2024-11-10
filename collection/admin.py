@@ -8,7 +8,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'sku',
         'name',
-        'get_categories',
+        'category',
         'shop_by', 
         'product_type',
         'price',
@@ -23,7 +23,7 @@ class ProductAdmin(admin.ModelAdmin):
     
     def get_categories(self, obj):
         return ", ".join([category.friendly_name for category in obj.category.all()])
-    get_categories.short_description = 'Categories'
+    get_categories.short_description = 'Category'
 
 
 class CategoryAdmin(admin.ModelAdmin):

@@ -28,7 +28,11 @@
                     <div class="row border-top cart-item mb-4 py-3">
                         <!-- Product Image -->
                          <div class="col-4 col-md-2">
-                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid rounded">
+                            {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid rounded">
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}" class="img-fluid rounded">
+                            {% endif %}
                          </div>
 
                         <!-- Product Info -->
