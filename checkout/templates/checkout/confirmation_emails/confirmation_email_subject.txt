@@ -1,0 +1,1 @@
+Your Japan Market Order is Confirmed! Order Number: {{ order.order_number }}
