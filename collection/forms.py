@@ -2,7 +2,7 @@ from django import forms
 from .models import Category, Product, ProductType, ShopByOption
 
 
-class ProfuctForm(forms.ModelForm):
+class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
@@ -37,6 +37,4 @@ class ProfuctForm(forms.ModelForm):
             (o.id, o.get_friendly_name()) for o in options
         ]
 
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'border-black rounded-0'
 
