@@ -92,6 +92,13 @@
 
                     <p class="small fw-medium">£{{product.price}}</p>
 
+                    <!-- Admin Product Management -->
+                    {% if request.user.is_superuser %}
+                        <small>
+                            <a class="btn blue-btn" href="{% url 'edit_product' product.id %}">Edit</a>
+                            <a class="btn rose-btn" href="{% url 'delete_product' product.id %}">Delete</a>
+                        </small>
+                    {% endif %}
                 </div>
             </a>
         </div>
