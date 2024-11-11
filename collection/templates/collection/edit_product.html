@@ -20,12 +20,18 @@
         </div>
     </div>
 
-    <!-- Add Product Form -->
+    <!-- Edit Product Form -->
     <div class="row border-top">
         <div class="col-12 col-md-8 mx-auto mt-3">
             <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form | crispy }}
+                {% for field in form %}
+                    {% if field.name != 'image' %}
+                        {{ field | as_crispy_field }}
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                {% endfor %}
                 <div class="text-right">
                     <button class="btn blue-btn py-2 px-4" type="submit">Update Product</button>
                     <a href="{% url 'collection' %}" class="btn rose-btn py-2 px-4">Cancel</a>
@@ -35,4 +41,32 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script>
+        $('#new-image').change(function() {
+            let file = this.files[0];
+            let preview = $('#image-preview');
+            let filename = $('#filename');
+
+            if (file) {
+                // Show the file name
+                filename.text(`Image will be set to: ${file.name}`);
+
+                // Show image preview
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.attr('src', e.target.result);
+                    preview.show();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.hide();
+                preview.attr('src', '#');
+                filename.text('');
+            }
+        });
+    </script>
 {% endblock %}

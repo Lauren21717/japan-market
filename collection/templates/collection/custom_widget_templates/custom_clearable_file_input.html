@@ -1,0 +1,27 @@
+{% if widget.is_initial %}
+    <!-- Image Form Widget Section -->
+    <p>{{ widget.initial_text }}:</p>
+    <a href="{{ widget.value.url }}">
+        <img width="96" height="96" src="{{ widget.value.url }}" class="rounded shadow-sm">
+    </a>
+    {% if not widget.required %}
+        <div class="custom-control custom-checkbox mt-2">
+            <label class="custom-control-label text-danger" for="{{ widget.checkbox_id }}">
+                {{ widget.clear_checkbox_label }}
+                <input class="custom-control-input" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}" {% if widget.attrs.disabled %} disabled{% endif %}>
+            </label>
+        </div>
+    {% endif %}
+    <br>
+{% endif %}
+<span class="btn blue-btn py-2 px-4 btn-file">
+    Select Image
+    <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}" {% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %} {% include "django/forms/widgets/attrs.html" %}>
+</span>
+
+<!-- Image Preview and Filename Display -->
+<div>
+    <img id="image-preview" src="#" alt="Image Preview" width="96" height="96" class="rounded shadow-sm" style="display: none; margin-top: 10px;">
+    <p class="text-danger" id="filename"></p>
+</div>
+

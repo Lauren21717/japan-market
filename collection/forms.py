@@ -1,14 +1,20 @@
 from django import forms
 from .models import Category, Product, ProductType, ShopByOption
+from .widgets import CustomClearableFileInput
 
 class ProductForm(forms.ModelForm):
+    image = forms.ImageField(
+        label='Image', 
+        required=False,
+        widget=CustomClearableFileInput()
+    )
+
     class Meta:
         model = Product
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
         categories = Category.objects.all()
         types = ProductType.objects.all()
         options = ShopByOption.objects.all()

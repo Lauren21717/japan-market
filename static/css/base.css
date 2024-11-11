@@ -151,6 +151,31 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
+/* Product Form */
+.btn-file {
+    position:relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-checkbox .custom-control-label::before {
+    border-color: #dc3545;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
 /* Shopping Bag Page */
 .cart-item-img {
     max-width: 80px;
@@ -284,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
     scrollbar-color: #888 #f1f1f1;
 }
 
-
+/* Media query */
 @media (min-width: 768px) {
     .overflow-auto {
         overflow-y: auto;
