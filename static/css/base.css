@@ -124,6 +124,38 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer !important;
 }
 
+/* Footer */
+.footer-section {
+    background-color: #7F4852;
+    color: #FFFAF6;
+}
+
+.footer-p {
+    font-size: 0.8rem;
+}
+
+.copyright{
+    font-size: 0.7rem;
+}
+
+.footer-link {
+    font-size: 0.9rem;
+}
+
+.quick-link:hover {
+    color: #F6DCB9;
+}
+
+.social-icon {
+    color: #F6DCB9;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f4b768;
+}
+
 /* Product Page */
 .img-thumbnail {
     cursor: pointer;

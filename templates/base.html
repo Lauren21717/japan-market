@@ -54,7 +54,7 @@
 </head>
 
 <body>
-
+    <!-- Nav Bar -->
     <header class="container navbar-container">
         <!-- Logo -->
         <a class="navbar-brand" href="{% url 'home' %}">
@@ -143,6 +143,7 @@
         </div>
     </div>
 
+    <!-- Toast -->
     {% block messages %}
     <div class="message-container">
         {% for message in messages %}
@@ -154,11 +155,54 @@
     {% block page_header %}
     {% endblock %}
 
+    <!-- Content -->
     <main>
         {% block content %}
         {% endblock %}
     </main>
 
+    <!-- Footer -->
+    <footer class="footer-section text-light py-5">
+        <div class="container">
+            <div class="row align-items-start">
+                <!-- About Us Section -->
+                <div class="col-12 col-lg-4 mb-3">
+                    <h5 class="mb-3">Japan Market</h5>
+                    <p class="footer-p">Welcome to Japan Market, your premier destination for authentic Japanese products. Explore our wide
+                        range of high-quality goods and bring a piece of Japan to your home.</p>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="col-12 col-lg-4 mb-3">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled footer-link">
+                        <li><a class="dropdown-item quick-link" href="{% url 'home' %}">Home</a></li>
+                        <li><a class="dropdown-item quick-link" href="{% url 'collection' %}">Collection</a></li>
+                        <li><a class="dropdown-item quick-link" href="#">About</a></li>
+                        <li><a class="dropdown-item quick-link" href="#">Contact</a></li>
+
+                    </ul>
+                </div>
+
+                <!-- Social Links Section -->
+                <div class="col-12 col-lg-4 mb-3">
+                    <h5>Follow Us</h5>
+                    <ul class="list-unstyled d-flex gap-4">
+                        <li><a target="_blank" href="https://www.facebook.com/" class="social-icon"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://www.instagram.com/" class="social-icon"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a target="_blank" href="https://x.com/?lang=en" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+                        <li><a target="_blank" href="https://www.youtube.com/" class="social-icon"><i class="fa-brands fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Copyright -->
+            <div class="text-center mt-4">
+                <p class="mb-0 copyright">&copy; 2024 Japan Market | All rights reserved. Bringing the best of Japan to your doorstep.</p>
+            </div>
+        </div>
+
+    </footer>
 
 
     {% block postloadjs %}
