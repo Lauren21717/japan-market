@@ -6,6 +6,7 @@
             "name": "pet_products",
             "friendly_name": "Pet Products",
             "header": "Pet Essentials",
+            "image": "collection-pet.png",
             "description": "Find everything your pets need, from food to accessories."
         }
     },
@@ -16,6 +17,7 @@
             "name": "skincare_beauty",
             "friendly_name": "Skincare & Beauty",
             "header": "Enhance Your Glow",
+            "image": "collection-skincare.png",
             "description": "Premium skincare products for a radiant look."
         }
     },
@@ -26,6 +28,7 @@
             "name": "art_crafts",
             "friendly_name": "Art & Crafts",
             "header": "Unleash Creativity",
+            "image": "collection-anc.png",
             "description": "Explore a variety of art and craft supplies for all ages."
         }
     },
@@ -36,6 +39,7 @@
             "name": "special_offers",
             "friendly_name": "Special Offers",
             "header": "Exclusive Deals",
+            "image": "collection-offer.png",
             "description": "Grab limited-time discounts on selected items."
         }
     }

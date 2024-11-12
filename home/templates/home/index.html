@@ -1,12 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
-    </div>
-</div>
+<!-- Home Page css -->
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -28,5 +25,8 @@
             <img src="{% static 'images/bg-image/hero.png' %}" class="img-fluid w-100 h-100 object-fit-cover" alt="Hero Image">
         </div>
     </div>
+
+    <!-- Category Section -->
+    {% include 'home/includes/category.html' %}
 </section>
 {% endblock %}

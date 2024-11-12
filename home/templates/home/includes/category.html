@@ -1,0 +1,49 @@
+<!-- Category Section -->
+<div class="row my-4">
+    <h4 class="text-center py-4">Our Collections</h4>
+
+    <!-- Desktop and tablet view -->
+    <div class="d-none d-md-block">
+        <div class="row row-cols-md-4 g-4 justify-content-center">
+            {% for category in categories %}
+                <div class="col text-center">
+                    <a href="{% url 'collection' %}?category={{ category.name|lower }}" class="text-decoration-none text-dark">
+                        <div class="category-card">
+                            {% if category.image %}
+                                <img src="{{ category.image.url }}" alt="{{ category.name }}" 
+                                     class="category-img img-fluid rounded-circle shadow-sm hover-zoom">
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}no-image.png" alt="{{ category.name }}" 
+                                     class="category-img img-fluid rounded-circle shadow-sm hover-zoom">
+                            {% endif %}
+                            <p class="mt-3 fw-medium">{{ category.get_friendly_name }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Mobile Scroll View -->
+    <div class="d-md-none">
+        <div class="category-scroll-container">
+            <div class="d-flex gap-3 text-center">
+                {% for category in categories %}
+                    <a href="{% url 'collection' %}?category={{ category.name|lower }}" class="text-decoration-none text-dark">
+                        <div class="category-card flex-shrink-0">
+                            {% if category.image %}
+                                <img src="{{ category.image.url }}" alt="{{ category.name }}" 
+                                        class="category-img rounded-circle shadow-sm hover-zoom">
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}no-image.png" alt="{{ category.name }}" 
+                                        class="category-img rounded-circle shadow-sm hover-zoom">
+                            {% endif %}
+                            <p class="mt-2 fw-medium">{{ category.get_friendly_name }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>

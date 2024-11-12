@@ -1,0 +1,46 @@
+/* Category Navigation */
+.category-img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.05);
+}
+
+/* Category Mobile scroll */
+.category-scroll-container {
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0.5rem 0;
+}
+
+.category-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+    .category-img {
+        width: 7rem;
+        height: 7rem;
+    }
+    
+    .category-card p {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .category-img {
+        width: 8.5rem;
+        height: 8.5rem;
+    }
+}
+
