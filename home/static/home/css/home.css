@@ -26,6 +26,7 @@
 
 /* Media Query */
 @media (max-width: 768px) {
+    /* Category Section */
     .category-img {
         width: 7rem;
         height: 7rem;

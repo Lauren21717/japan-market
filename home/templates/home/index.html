@@ -7,11 +7,11 @@
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="container hero-section">
-    <div class="row g-0">
+<section class="container">
+    <!-- Hero Section -->
+    <div class="row g-0 hero-section">
         <!-- Left Hero -->
-        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center py-md-5 pt-4 pb-1">
+        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center py-md-5 pt-4 pb-1 order-2 order-md-1">
             <div class="text-content">
                 <p class="fw-light small-text">The new collection are here</p>
                 <h2 class="hero-title my-3">Shop Japan, Anywhere</h2>
@@ -21,12 +21,54 @@
         </div>
 
         <!-- Right Hero -->
-        <div class="col-12 col-md-6 hero-img">
+        <div class="col-12 col-md-6 hero-img order-1 order-md-2">
             <img src="{% static 'images/bg-image/hero.png' %}" class="img-fluid w-100 h-100 object-fit-cover" alt="Hero Image">
         </div>
     </div>
 
     <!-- Category Section -->
     {% include 'home/includes/category.html' %}
+
+    <!-- Special Offer Section -->
+    <div class="row my-4">
+        <h4 class="text-center py-4">Special Offers</h4>
+        <div class="row product-display">
+            {% for product in products %}
+            <div class="col-6 col-md-3 mb-4">
+                <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-dark">
+                    <div class="overflow-hidden">
+                        {% if product.image %}
+                        <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
+                            alt="{{ product.name }}">
+                        {% else %}
+                        <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
+                            alt="{{ product.name }}">
+                        {% endif %}
+                        <p class="pt-3 pb-1 small">{{product.name}}</p>
+    
+                        {% if product.rating %}
+                        <p class="text-muted small fw-medium">
+                            <i class="fa-solid fa-star"></i>
+                            {{ product.rating }} /5
+                        </p>
+                        {% else %}
+                        <p class="text-muted small fw-medium">No Rating</p>
+                        {% endif %}
+    
+                        <p class="small fw-medium">£{{product.price}}</p>
+    
+                        <!-- Admin Product Management -->
+                        {% if request.user.is_superuser %}
+                            <small>
+                                <a class="btn blue-btn" href="{% url 'edit_product' product.id %}">Edit</a>
+                                <a class="btn rose-btn" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </small>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </section>
 {% endblock %}
