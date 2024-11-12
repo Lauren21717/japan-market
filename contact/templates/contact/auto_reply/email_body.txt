@@ -1,0 +1,10 @@
+Dear {{ name }},
+
+Thank you for reaching out to Japan Market! Your message has reached our team.
+
+You can typically expect a response from us within 24 hours.
+
+We appreciate your patience as we carefully craft the perfect reply to your inquiry. Sit tight—we’ll be in touch very soon!
+
+Best regards,
+The Japan Market Team

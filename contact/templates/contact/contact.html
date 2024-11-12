@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="container mb-5">
+    <div class="row mt-4 mb-3 align-items-center">
+        <!-- Header Section -->
+        <div class="col-12 col-lg-8 mx-auto">
+            <h2>Contact Us</h2>
+            <p class="text-muted">
+                We love hearing from our customers! Whether you have a question, feedback, or need assistance, please
+                don't hesitate to get in touch. Our team is here to help and will respond to your message within 24
+                hours.
+            </p>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="col-12 col-lg-6">
+        <form class="mt-3" action="{% url 'contact' %}" method="POST" id="profile-update-form">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn blue-btn py-2 px-4 float-right mt-3">
+                Get in touch
+            </button>
+        </form>
+    </div>
+
+</section>
+{% endblock %}
