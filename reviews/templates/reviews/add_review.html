@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+<section class="container p-4">
+    <div class="row">
+        <div class="col">
+            <h5>{{product.name}}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-5">
+            <!-- Product Image -->
+            <div class="my-5">
+                {% if product.image %}
+                <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
+                    alt="{{ product.name }}">
+                {% else %}
+                <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
+                    alt="{{ product.name }}">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-12 col-md-7">
+            <!-- Review Form -->
+            <div class="row">
+                <div class="col-12">
+                    <form method="POST" action="{% url 'add_review'  product.id  %}" class="form text-muted mb-2">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <div>
+                            <a class="btn blue-btn px-4 py-2"
+                                href="{% url 'product_detail' product.id %}">Cancel</a>
+                            <button class="btn rose-btn px-4 py-2" type="submit">Add Product
+                                Review</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
