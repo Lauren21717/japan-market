@@ -91,3 +91,24 @@ def edit_review(request,product_id, product_review_id):
         'review': review,
     }
     return render(request, 'reviews/edit_review.html', context)
+
+
+@login_required
+def delete_review(request, product_review_id):
+    """
+    Delete a product review
+    """
+    review = get_object_or_404(ProductReview, pk=product_review_id)
+
+    # Check if the user is the author of the review or an admin
+    if request.user != review.user_profile.user and not request.user.is_superuser:
+        messages.error(
+            request,
+            'You are not authorized to delete this review.'
+        )
+        return redirect('product_detail', product_id=review.product.id)
+
+    # Delete the review and show a success message
+    review.delete()
+    messages.success(request, 'Review deleted successfully!')
+    return redirect('product_detail', product_id=review.product.id)
