@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 
 class Category(models.Model):
 
@@ -69,3 +70,7 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def update_average_rating(self):
+        average_rating = self.reviews.aggregate(Avg('rating'))['rating__avg'] or 0
+        self.rating = round(average_rating, 1)
+        self.save()

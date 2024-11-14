@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Avg, Count
 from django.db.models.functions import Lower
 
 from .models import Product, Category, ShopByOption
 from .forms import ProductForm
+from profiles.models import UserProfile
+from reviews.models import ProductReview
 
 
 def collection(request):
@@ -113,9 +115,33 @@ def product_detail(request, product_id):
     """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviews = ProductReview.objects.filter(product=product).order_by('-created_at')
+    total_reviews = reviews.count()
+    profile = False
+    already_reviews = True
+    validated_purchase = False
+
+    # Check if the user is authenticated and get the user profile
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        
+        # Check if the user has already reviewed the product
+        already_review = ProductReview.objects.filter(
+            product=product, user_profile=profile
+        ).exists()
+
+        # Check if the user has purchased the product
+        if product in profile.user_purchases.all():
+            validated_purchase = True
 
     context = {
         'product': product,
+        'reviews': reviews,
+        'average_rating': product.rating,
+        'total_reviews': total_reviews,
+        'profile': profile,
+        'validated_purchase': validated_purchase,
+        'already_reviewed': already_review,
     }
 
     return render(request, 'collection/product_detail.html', context)

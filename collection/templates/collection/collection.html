@@ -80,14 +80,23 @@
                     {% endif %}
                     <p class="pt-3 pb-1 small">{{product.name}}</p>
 
-
+                    <!-- Product Rating -->
                     {% if product.rating %}
-                    <p class="text-muted small fw-medium">
-                        <i class="fa-solid fa-star"></i>
-                        {{ product.rating }} /5
-                    </p>
+                        <p class="text-muted small fw-medium">
+                            {% for i in "12345"|make_list %}
+                                {% if i|add:0 <= product.rating %}
+                                    <i class="fa-solid fa-star"></i>
+                                {% else %}
+                                    <i class="fa-regular fa-star"></i>
+                                {% endif %}
+                            {% endfor %}
+                            {{ product.rating }} /5
+                        </p>
                     {% else %}
-                    <p class="text-muted small fw-medium">No Rating</p>
+                        <p class="text-muted small fw-medium">
+                            <i class="fa-solid fa-star"></i>
+                            No Rating
+                        </p>
                     {% endif %}
 
                     <p class="small fw-medium">£{{product.price}}</p>

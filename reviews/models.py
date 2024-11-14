@@ -8,7 +8,7 @@ class ProductReview(models.Model):
     class Meta:
         verbose_name_plural = 'Product Reviews'
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
     user_profile = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, related_name='reviews'
     )
