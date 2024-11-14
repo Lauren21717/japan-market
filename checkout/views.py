@@ -156,6 +156,12 @@ def checkout_success(request, order_number):
         order.user_profile = profile
         order.save()
 
+        purchased_products = Product.objects.filter(
+            orderlineitem__order=order
+        ).distinct()
+
+        profile.user_purchases.add(*purchased_products)
+
         if save_info:
             profile_data = {
                 'default_phone_number': order.phone_number,

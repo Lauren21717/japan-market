@@ -51,3 +51,43 @@ def add_review(request, product_id):
     }
     return render(request, 'reviews/add_review.html', context)
 
+
+@login_required
+def edit_review(request,product_id, product_review_id):
+    """
+    A view to return the edit product review page
+    """
+    review = get_object_or_404(ProductReview, pk=product_review_id)
+    product = get_object_or_404(Product, id=product_id)
+    profile = get_object_or_404(UserProfile, user=request.user)
+
+    # Check if the review author
+    if request.user != review.user_profile.user:
+        messages.error(
+            request,
+            'Forbidden: You are not allowed to edit review.'
+        )
+        return redirect('product_detail', product_id=product.id)
+
+    if request.method == 'POST':
+        form = ProductReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = product
+            review.save()
+            messages.success(request, 'Review updated successfully!')
+            return redirect('product_detail', product_id=product.id)
+        else:
+            messages.error(
+                request,
+                'Failed to update review. Please ensure the form is valid.'
+            )
+    else:
+        form = ProductReviewForm(instance=review)
+
+    context = {
+        'form': form,
+        'product': product,
+        'review': review,
+    }
+    return render(request, 'reviews/edit_review.html', context)

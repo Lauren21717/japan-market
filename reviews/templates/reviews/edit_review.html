@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container p-4">
+    <div class="row">
+        <div class="col">
+            <h5>Edit Review for {{ product.name }}</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-5">
+            <!-- Product Image -->
+            <div class="my-5">
+                {% if product.image %}
+                    <img class="img-fluid hover-scale transition" src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
+                        alt="{{ product.name }}">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-12 col-md-7">
+            <!-- Review Form -->
+            <div class="row">
+                <div class="col-12">
+                    <form class="form text-muted mb-2" action="{% url 'edit_review' product.id review.id %}"
+                        method="POST">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <div>
+                            <a href="{% url 'product_detail' product.id %}" class="btn blue-btn px-4 py-2">
+                                Cancel
+                            </a>
+                            <button class="btn rose-btn px-4 py-2" type="submit">Update Review</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
