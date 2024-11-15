@@ -3,7 +3,7 @@
 
 <!-- Home Page css -->
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -11,18 +11,21 @@
     <!-- Hero Section -->
     <div class="row g-0 hero-section">
         <!-- Left Hero -->
-        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center py-md-5 pt-4 pb-1 order-2 order-md-1">
+        <div
+            class="col-12 col-md-6 d-flex align-items-center justify-content-center py-md-5 pt-4 pb-1 order-2 order-md-1">
             <div class="text-content">
                 <p class="fw-light small-text">The new collection are here</p>
                 <h2 class="hero-title my-3">Shop Japan, Anywhere</h2>
-                <p class="fw-light small-text">Shop high-quality Japanese products and enjoy a piece of Japan, no matter where you are.</p>
+                <p class="fw-light small-text">Shop high-quality Japanese products and enjoy a piece of Japan, no matter
+                    where you are.</p>
                 <a href="{% url 'collection' %}" class="btn py-2 px-4 blue-btn">Shop Now</a>
             </div>
         </div>
 
         <!-- Right Hero -->
         <div class="col-12 col-md-6 hero-img order-1 order-md-2">
-            <img src="{% static 'images/bg-image/hero.png' %}" class="img-fluid w-100 h-100 object-fit-cover" alt="Hero Image">
+            <img src="{% static 'images/bg-image/hero.png' %}" class="img-fluid w-100 h-100 object-fit-cover"
+                alt="Hero Image">
         </div>
     </div>
 
@@ -35,8 +38,9 @@
         <div class="row product-display">
             {% for product in products %}
             <div class="col-6 col-md-3 mb-4">
-                <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-dark">
-                    <div class="overflow-hidden">
+                <div class="overflow-hidden">
+                    <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-dark">
+                        <!-- Product Image -->
                         {% if product.image %}
                         <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
                             alt="{{ product.name }}">
@@ -44,40 +48,161 @@
                         <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
                             alt="{{ product.name }}">
                         {% endif %}
+
+                        <!-- Product Name -->
                         <p class="pt-3 pb-1 small">{{product.name}}</p>
-    
+
+
+                        <!-- Product Rating -->
                         {% if product.rating %}
-                            <p class="text-muted small fw-medium">
-                                {% for i in "12345"|make_list %}
-                                    {% if i|add:0 <= product.rating %}
-                                        <i class="fa-solid fa-star"></i>
-                                    {% else %}
-                                        <i class="fa-regular fa-star"></i>
-                                    {% endif %}
+                        <p class="text-muted small fw-medium">
+                            {% for i in "12345"|make_list %}
+                            {% if i|add:0 <= product.rating %} <i class="fa-solid fa-star"></i>
+                                {% else %}
+                                <i class="fa-regular fa-star"></i>
+                                {% endif %}
                                 {% endfor %}
                                 {{ product.rating }} /5
-                            </p>
+                        </p>
                         {% else %}
-                            <p class="text-muted small fw-medium">
-                                <i class="fa-solid fa-star"></i>
-                                No Rating
-                            </p>
+                        <p class="text-muted small fw-medium">
+                            <i class="fa-regular fa-star"></i>
+                            No Rating
+                        </p>
                         {% endif %}
-    
+
+                        <!-- Product Price -->
                         <p class="small fw-medium">£{{product.price}}</p>
-    
+                    </a>
+                    <!-- Buttons -->
+                    <div class="action-buttons">
+                        <!-- Quick Buy Pop-up -->
+                        <button class="btn blue-btn w-100 py-2 px-4"
+                            data-bs-toggle="modal" data-bs-target="#quickBuyModal_{{ product.id }}">
+                            QUICK BUY
+                        </button>
+
+                        <div class="modal fade" id="quickBuyModal_{{ product.id }}" 
+                                tabindex="-1" aria-labelledby="quickBuyModalLabel_{{ product.id }}"
+                                aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header border-bottom-0">
+                                        <h5 class="modal-title" id="quickBuyModalLabel_{{ product.id }}">
+                                            {{ product.name }}
+                                        </h5>
+                                        <button type="button" class="btn-close" 
+                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <!-- Product Image Column -->
+                                            <div class="col-md-4 mb-3 mb-md-0">
+                                                {% if product.image %}
+                                                <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                                {% else %}
+                                                <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                                                {% endif %}
+                                            </div>
+
+                                            <!-- Product Details & Form Column -->
+                                            <div class="col-md-8">
+                                                <form action="{% url 'add_to_bag' product.id %}" method="POST" class="quick-buy-form">
+                                                    {% csrf_token %}
+
+                                                    <!-- Product Price -->
+                                                    <p class="mb-3">
+                                                        {% if product.compare_price %}
+                                                        <span class="text-muted text-decoration-line-through me-2">
+                                                            £{{ product.compare_price }}
+                                                        </span>
+                                                        {% endif %}
+                                                        <span class="fw-bold">£{{ product.price }}</span>
+                                                    </p>
+
+                                                    <!-- Size Selection -->
+                                                    {% if product.has_sizes %}
+                                                    <div class="mb-3">
+                                                        <label class="form-label fw-bold">Size:</label>
+                                                        <div class="size-buttons">
+                                                            {% for size in product.sizes %}
+                                                            <input type="radio" class="btn-check" name="product_size" id="modal_size_{{ product.id }}_{{ size }}"
+                                                                autocomplete="off" value="{{ size }}" {% if forloop.first %}required{% endif %}>
+                                                            <label class="btn rose-btn me-2 mb-2" for="modal_size_{{ product.id }}_{{ size }}">{{ size }}</label>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+
+                                                    <!-- Quantity Selection -->
+                                                    <div class="col-12">
+                                                        <p class="mt-1"><strong>Quantity:</strong></p>
+                                                        <div class=" w-50">
+                                
+                                                            <div class="input-group input-group-{{ product.id }}">
+                                                                <!-- Decrement Button -->
+                                                                <button class="decrement-qty btn blue-btn rounded-0 decrement-qty_{{ product.id }}"
+                                                                    data-item_id="{{ product.id }}"
+                                                                    {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
+                                                                    <div class="icon">
+                                                                        <i class="fa-solid fa-minus"></i>
+                                                                    </div>
+                                                                </button>
+                                
+                                
+                                                                <!-- Quantity Input -->
+                                                                <input 
+                                                                    class="form-control qty_input" 
+                                                                    id="id_qty_{{ product.id }}" 
+                                                                    type="number"
+                                                                    name="quantity" 
+                                                                    value="1" min="1" max="99" 
+                                                                    data-item_id="{{ product.id }}"
+                                                                    {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
+                                
+                                                                <!-- Increment Button -->
+                                                                <button class="increment-qty btn blue-btn rounded-0 increment-qty_{{ product.id }}"
+                                                                    data-item_id="{{ product.id }}"
+                                                                    {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
+                                                                    <div class="icon">
+                                                                        <i class="fa-solid fa-plus"></i>
+                                                                    </div>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            
+                                                    <!-- Submit Button -->
+                                                    <button type="submit" class="btn blue-btn w-100 mt-4 py-2 px-4 text-uppercase">ADD TO BAG</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Admin Product Management -->
                         {% if request.user.is_superuser %}
-                            <small>
-                                <a class="btn blue-btn" href="{% url 'edit_product' product.id %}">Edit</a>
-                                <a class="btn rose-btn" href="{% url 'delete_product' product.id %}">Delete</a>
-                            </small>
+                        <div class="admin-buttons mt-2">
+                            <a class="btn yellow-btn" href="{% url 'edit_product' product.id %}">Edit</a>
+                            <a class="btn rose-btn" href="{% url 'delete_product' product.id %}">Delete</a>
+                        </div>
                         {% endif %}
                     </div>
-                </a>
+                </div>
+
             </div>
             {% endfor %}
         </div>
     </div>
+
 </section>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'collection/includes/quantity_input_script.html' %}
 {% endblock %}

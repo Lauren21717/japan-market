@@ -53,7 +53,7 @@
             <!-- Admin Product Management -->
             {% if request.user.is_superuser %}
             <div class="my-3">
-                <a class="btn blue-btn" href="{% url 'edit_product' product.id %}">Edit</a>
+                <a class="btn yellow-btn" href="{% url 'edit_product' product.id %}">Edit</a>
                 <a class="btn rose-btn" href="{% url 'delete_product' product.id %}">Delete</a>
             </div>
             {% endif %}
