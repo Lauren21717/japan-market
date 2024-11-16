@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<!-- Profile Section -->
+<section class="container">
+    <div class="row mt-4 mb-3 align-items-center">
+        <div class="col-12 col-md-8">
+            <h2 class="fw-semibold">Welcome, {{ user.username|capfirst }}! </h2>
+        </div>
+    </div>
+    <div class="row border-top pt-4">
+        <!-- Order History -->
+        <div class="col-12 col-lg-6">
+            <p class="text-muted">Order History</p>
+            <div class="order-history-container">
+                {% if orders %}
+                    {% for order in orders %}
+                    <div class="row border-top order-item mb-4 py-3">
+                        <!-- Order Info -->
+                        <div class="col-12 col-md-6">
+                            <p class="fw-bold mb-1">
+                                Order #: 
+                                <a href="{% url 'order_detail' order.order_number %}" 
+                                   title="{{ order.order_number }}">
+                                    {{ order.order_number|truncatechars:6 }}
+                                </a>
+                            </p>
+                            <p class="text-muted small mb-1">Date: {{ order.date }}</p>
+                            <p class="fw-bold">Total: £{{ order.grand_total }}</p>
+                        </div>
+
+                        <!-- Order Items -->
+                        <div class="col-12 col-md-6">
+                            <p class="fw-bold mb-2">Items:</p>
+                            {% for item in order.lineitems.all %}
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <p class="small mb-0">
+                                        {{ item.product.name }} x{{ item.quantity }}
+                                        {% if item.product.has_sizes %}
+                                            <span class="text-muted">(Size: {{ item.product.size|upper }})</span>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href="{% url 'product_detail' item.product.id %}" 
+                                       class="btn btn-sm blue-btn" 
+                                       title="Review product">
+                                        <i class="fa-solid fa-star fa-sm"></i>
+                                        Review
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-muted">You haven't placed any orders yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'profiles/js/countryfield.js' %}"></script>
+{% endblock %}
