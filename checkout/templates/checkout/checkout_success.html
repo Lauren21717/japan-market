@@ -33,8 +33,8 @@
         <div class="col-12 col-lg-8 mx-auto">
             <div class="order-confirmation-wrapper rounded-3 shadow-sm border p-3">
                 <!-- Order Info -->
-                <div class="mb-4">
-                    <h6 class="text-uppercase mb-2 pb-2 border-bottom">Order Info:</h6>
+                <div class="mt-2 mb-4">
+                    <h6 class=" mb-2 pb-2 border-bottom">Order Info:</h6>
                     <div class="row">
                         <div class="col-md-6">
                             <p class="mb-1 text-muted small">Order Number</p>
@@ -54,25 +54,37 @@
                 </div>
 
                 <!-- Order Items -->
-                <div class="mb-4">
-                    <h6 class="text-uppercase mb-2 pb-2 border-bottom">Order Details:</h6>
+                <div class="border-top py-4">
+                    <h6 class="fw-medium mb-3 ">Items in your order:</h6>
                     {% for item in order.lineitems.all %}
-                    <div class="row">
-                        <div class="col-12 col-md-8">
-                            <p class="mb-0 fw-semibold">
-                                {{ item.product.name }}{% if item.product_size %} - Size {{ item.product_size|upper }}{% endif %}
-                            </p>
-                        </div>
-                        <div class="col-12 col-md-4 text-end">
-                            <p class="mb-0">{{ item.quantity }} @ £{{ item.product.price }} each</p>
+                    <div class="row align-items-center {% if not forloop.last %}mb-3{% endif %}">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-light rounded" style="width: 60px; height: 60px;">
+                                    {% if item.product.image %}
+                                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                    {% else %}
+                                        <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="No image available">
+                                    {% endif %}
+                                </div>
+                                <div class="ms-3">
+                                    <p class="mb-1">{{ item.product.name }}</p>
+                                    <p class="small text-secondary-emphasis mb-0">
+                                        Qty: {{ item.quantity }}
+                                        {% if item.product.has_sizes %}
+                                        | Size: {{ item.product.size|upper }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
 
                 <!-- Delivery Info -->
-                <div class="mb-4">
-                    <h6 class="text-uppercase mb-2 pb-2 border-bottom">Delivery Address</h6>
+                <div class="border-top py-4">
+                    <h6 class="fw-medium mb-3">Delivery Address:</h6>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -126,8 +138,8 @@
                 </div>
 
                 <!-- Billing Summary -->
-                <div class="mb-4">
-                    <h6 class="text-uppercase mb-2 pb-2 border-bottom">Billing Summary:</h6>
+                <div class="border-top py-4">
+                    <h6 class="fw-medium mb-3">Billing Summary:</h6>
                     <div class="p-3">
                         <div class="d-flex justify-content-between mb-2">
                             <span class="text-muted fw-semi-bold">Order Total</span>
@@ -146,7 +158,7 @@
 
                 <!-- Action Buttons -->
                 {% if from_profile %}
-                    <div class="text-end border-top pt-4"></div>
+                    <div class="text-end border-top pt-4">
                         <a  href="{% url 'profile' %}" 
                                 class="btn rose-btn">
                             <i class="fa-solid fa-angles-left me-2"></i>

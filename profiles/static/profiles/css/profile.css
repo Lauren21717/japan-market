@@ -11,7 +11,20 @@
     color: #000000;
 }
 
-#id_default_country option:(:first-child) {
+#id_default_country option:first-child {
     color: #6c757e;
 }
 
+.order-card {
+    transition: all 0.2s ease;
+    border: 1px solid #e5e5e5;
+    background-color: #fffbf8;
+}
+
+.order-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.text-secondary-emphasis {
+    color: #666;
+}

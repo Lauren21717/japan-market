@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -10,19 +10,52 @@
 
 {% block content %}
 <!-- Profile Section -->
-<section class="container">
-    <div class="row mt-4 mb-3 align-items-center">
+<section class="container py-5">
+    <!-- Header -->
+    <div class="row mb-4">
         <div class="col-12 col-md-8">
             <h2 class="fw-semibold">Welcome, {{ user.username|capfirst }}! </h2>
         </div>
     </div>
-    <div class="row border-top pt-4">
 
+    <!-- Card Section -->
+    <div class="row g-4">
+        <!-- Account Detail Card -->
+        <div class="col-12 col-md-6">
+            <a href="{% url 'account_detail' %}" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <i class="fa-solid fa-user fs-3 mb-3 text-secondary"></i>
+                        <h5 class="card-title fw-bold mb-3">Account Details</h5>
+                        <p class="card-text text-muted">
+                            Easily update your personal information, change your password, modify your contact preferences.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Orders Card -->
+        <div class="col-12 col-md-6">
+            <a href="{% url 'order_history_list' %}" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <i class="fa-solid fa-box fs-3 mb-3 text-secondary"></i>
+                        <h5 class="card-title fw-bold mb-3">My Orders</h5>
+                        <p class="card-text text-muted">
+                            View and manage your orders, see the latest delivery information and track
+                            packages in your account.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
+
 </section>
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    <script src="{% static 'profiles/js/countryfield.js' %}"></script>
+{{ block.super }}
+<script src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}
