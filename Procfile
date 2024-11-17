@@ -1,0 +1,1 @@
+web: gunicorn japan_market.wsgi:application
