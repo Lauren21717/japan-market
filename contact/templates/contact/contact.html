@@ -3,7 +3,7 @@
 
 {% block content %}
 <section class="container mb-5">
-    <div class="row mt-4 mb-3 align-items-center">
+    <div class="row mt-5 mb-3 align-items-center">
         <!-- Header Section -->
         <div class="col-12 col-lg-8 mx-auto">
             <h2>Contact Us</h2>
@@ -16,7 +16,7 @@
     </div>
 
     <!-- Contact Form -->
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-8 mx-auto">
         <form class="mt-3" action="{% url 'contact' %}" method="POST" id="profile-update-form">
             {% csrf_token %}
             {{ form|crispy }}
