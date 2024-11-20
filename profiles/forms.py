@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from .models import UserProfile
 
@@ -8,6 +8,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ('user', 'user_purchases')
+
     def __init__(self, *args, **kwargs):
         """
         Add placeholders and classes, remove auto-generated
@@ -39,7 +40,7 @@ class UserNameUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username']
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 

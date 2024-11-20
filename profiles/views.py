@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
-from .forms import UserProfileForm, UserNameUpdateForm, CustomerPasswordChangeForm
+from .forms import (
+    UserProfileForm, UserNameUpdateForm,
+    CustomerPasswordChangeForm)
 from checkout.models import Order
 
 
@@ -12,10 +14,9 @@ def profile(request):
     """
     Display the user's profile.
     """
-    profile = get_object_or_404(UserProfile, user=request.user)
 
     template = 'profiles/profile.html'
-    context={
+    context = {
         'user': request.user,
         'on_profile_page': True
     }
@@ -36,28 +37,52 @@ def account_detail(request):
             profile_form = UserProfileForm(request.POST, instance=profile)
             if profile_form.is_valid():
                 profile_form.save()
-                messages.success(request, 'Delivery information updated successfully')
+                messages.success(
+                    request,
+                    'Delivery information updated successfully'
+                )
             else:
-                messages.error(request, 'Update failed. Please ensure the form is valid.')
+                messages.error(
+                    request,
+                    'Update failed. Please ensure the form is valid.'
+                )
 
         # Update Username Form
         elif 'username_submit' in request.POST:
-            username_form = UserNameUpdateForm(request.POST, instance=request.user)
+            username_form = UserNameUpdateForm(
+                request.POST,
+                instance=request.user
+            )
             if username_form.is_valid():
                 username_form.save()
-                messages.success(request, 'Username updated successfully')
+                messages.success(
+                    request,
+                    'Username updated successfully'
+                )
             else:
-                messages.error(request, 'Username update failed. Please ensure the username is valid.')
+                messages.error(
+                    request,
+                    'Username update failed. \
+                        Please ensure the username is valid.')
 
-        # Update Password Form 
+        # Update Password Form
         elif 'password_submit' in request.POST:
-            password_form = CustomerPasswordChangeForm(request.user, request.POST)
+            password_form = CustomerPasswordChangeForm(
+                request.user,
+                request.POST
+            )
             if password_form.is_valid():
                 user = password_form.save()
                 update_session_auth_hash(request, user)
-                messages.success(request, 'Your password was successfully updated!')
+                messages.success(
+                    request,
+                    'Your password was successfully updated!'
+                )
             else:
-                messages.error(request, 'Password update failed. Please correct the errors below.')
+                messages.error(
+                    request,
+                    'Password update failed. Please correct the errors below.'
+                )
 
     profile_form = UserProfileForm(instance=profile)
     username_form = UserNameUpdateForm(instance=request.user)

@@ -4,11 +4,13 @@ from django.shortcuts import (
 from django.contrib import messages
 from collection.models import Product
 
+
 def view_bag(request):
     """
     A view that renders the bag contents page
     """
     return render(request, 'bag/bag.html')
+
 
 def add_to_bag(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
@@ -26,17 +28,18 @@ def add_to_bag(request, item_id):
             extra_tags='error'
         )
         return redirect(redirect_url)
-    
+
     if size:
         if item_id in bag and isinstance(bag[item_id], int):
             bag[item_id] = {'items_by_size': {}}
-        
+
         if item_id in bag:
             if size in bag[item_id]['items_by_size']:
                 bag[item_id]['items_by_size'][size] += quantity
                 messages.success(
                     request,
-                    f'Updated size {size.upper()} {product.name} quantity to {bag[item_id]["items_by_size"][size]}',
+                    f'Updated size {size.upper()} {product.name} \
+                        quantity to {bag[item_id]["items_by_size"][size]}',
                     extra_tags='update'
                 )
             else:
@@ -89,7 +92,8 @@ def adjust_bag(request, item_id):
                     bag[item_id]['items_by_size'][size] = quantity
                     messages.success(
                         request,
-                        f'Updated size {size.upper()} {product.name} quantity to {quantity}',
+                        f'Updated size {size.upper()} {product.name} \
+                            quantity to {quantity}',
                         extra_tags='update'
                     )
                 else:
@@ -98,14 +102,16 @@ def adjust_bag(request, item_id):
                         bag.pop(item_id)
                     messages.success(
                         request,
-                        f'Removed size {size.upper()} {product.name} from your bag',
+                        f'Removed size {size.upper()} {product.name} \
+                            from your bag',
                         extra_tags='remove'
                     )
             else:
                 bag[item_id]['items_by_size'] = {size: quantity}
                 messages.success(
                     request,
-                    f'Updated size {size.upper()} {product.name} quantity to {quantity}',
+                    f'Updated size {size.upper()} {product.name} \
+                        quantity to {quantity}',
                     extra_tags='update'
                 )
     else:

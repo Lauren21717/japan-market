@@ -5,7 +5,6 @@ from django.conf import settings
 from django.contrib import messages
 
 from .forms import ContactForm
-from .models import Contact
 
 
 def contact(request):
@@ -14,7 +13,6 @@ def contact(request):
     https://mailtrap.io/blog/django-contact-form/
     """
     """ A view to return the contact page """
-
 
     if request.method == 'POST':
         form = ContactForm(request.POST)

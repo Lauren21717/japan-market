@@ -13,7 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = (
         'order_number', 'date',
         'delivery_cost', 'order_total',
-        'grand_total','original_bag',
+        'grand_total', 'original_bag',
         'stripe_pid'
     )
 
@@ -22,7 +22,7 @@ class OrderAdmin(admin.ModelAdmin):
         'email', 'phone_number', 'country',
         'postcode', 'town_or_city', 'street_address1',
         'street_address2', 'county', 'delivery_cost',
-        'order_total', 'grand_total','original_bag',
+        'order_total', 'grand_total', 'original_bag',
         'stripe_pid'
     )
 
@@ -33,5 +33,6 @@ class OrderAdmin(admin.ModelAdmin):
     )
 
     ordering = ('-date',)
+
 
 admin.site.register(Order, OrderAdmin)

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q, Avg, Count
+from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Product, Category, ShopByOption
@@ -21,7 +21,9 @@ def collection(request):
     sort = None
     direction = None
     page_header = "All Collections"
-    page_description = "Browse our full range of products across various categories, from essentials to exclusive items, crafted to meet your every need."
+    page_description = "Browse our full range of products across various \
+        categories, from essentials to exclusive items, \
+        crafted to meet your every need."
 
     if request.GET:
         # Sorting
@@ -42,7 +44,7 @@ def collection(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-  
+
             products = products.order_by(sortkey)
 
         # Category Filtering
@@ -57,11 +59,17 @@ def collection(request):
 
         # Shop By Options Filtering
         if 'shop_by_option' in request.GET:
-            shop_by_option_names = request.GET['shop_by_option'].split(',')
-            products = products.filter(shop_by__name__in=shop_by_option_names)
-            shop_by_options = ShopByOption.objects.filter(name__in=shop_by_option_names)
+            shop_by_option_names = request.GET['shop_by_option'].split(',')  # noqa
+            products = products.filter(
+                shop_by__name__in=shop_by_option_names
+            )
+            shop_by_options = ShopByOption.objects.filter(
+                name__in=shop_by_option_names
+            )
             if len(shop_by_option_names) == 1:
-                shop_by_option = ShopByOption.objects.get(name=shop_by_option_names[0])
+                shop_by_option = ShopByOption.objects.get(
+                    name=shop_by_option_names[0]
+                )
                 category = shop_by_option.category
                 page_header = f"{shop_by_option.friendly_name}"
                 page_description = category.description
@@ -69,29 +77,32 @@ def collection(request):
         # Clearance (Special Offer) Filtering
         if 'offer' in request.GET:
             page_header = "Special Offers"
-            page_description = "Grab limited-time discounts on selected items."
+            page_description = "Grab limited-time discounts on selected items."  # noqa
             products = products.filter(is_special_offer=True)
 
         # New Arrivals (Featured Products) Filtering
         if 'new_arrivals' in request.GET:
             page_header = "New Arrivals"
-            page_description = "Discover our latest additions to the collection."
+            page_description = "Discover our latest additions to the collection."  # noqa
             products = products.filter(is_featured=True)
 
         # All Specials (Both Special Offer and Featured Products)
         if 'all_specials' in request.GET:
-            products = products.filter(Q(is_special_offer=True) | Q(is_featured=True))
+            products = products.filter(Q(is_special_offer=True) | Q(is_featured=True))  # noqa
             page_header = "Exclusive Specials"
-            page_description = "Discover exclusive deals and the latest additions in one place. Shop now for limited-time discounts and fresh new products!"
+            page_description = "Discover exclusive deals and the latest additions in one place. Shop now for limited-time discounts and fresh new products!"   # noqa
 
         # Search Query
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request,
+                    "You didn't enter any search criteria!"
+                )
                 return redirect(reverse('collection'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query)  # noqa
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -115,16 +126,16 @@ def product_detail(request, product_id):
     """
 
     product = get_object_or_404(Product, pk=product_id)
-    reviews = ProductReview.objects.filter(product=product).order_by('-created_at')
+    reviews = ProductReview.objects.filter(product=product).order_by('-created_at')  # noqa
     total_reviews = reviews.count()
     profile = False
-    already_reviews = True
+    already_review = True
     validated_purchase = False
 
     # Check if the user is authenticated and get the user profile
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        
+
         # Check if the user has already reviewed the product
         already_review = ProductReview.objects.filter(
             product=product, user_profile=profile

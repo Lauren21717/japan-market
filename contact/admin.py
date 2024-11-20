@@ -8,4 +8,5 @@ class ContactAdmin(admin.ModelAdmin):
         'email',
     )
 
-admin.site.register(Contact,ContactAdmin)
+
+admin.site.register(Contact, ContactAdmin)

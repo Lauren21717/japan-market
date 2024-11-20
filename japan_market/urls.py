@@ -20,9 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import handler404, handler500, handler403
 
-handler404 = 'japan_market.views.handler404'
-handler403 = 'japan_market.views.handler403'
-handler500 = 'japan_market.views.handler500'
+handler404 = 'japan_market.views.handler404'  # noqa
+handler500 = 'japan_market.views.handler500'  # noqa
+handler403 = 'japan_market.views.handler403'  # noqa
 
 urlpatterns = [
     path('admin/', admin.site.urls),

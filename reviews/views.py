@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import ProductReview
@@ -41,7 +41,10 @@ def add_review(request, product_id):
             messages.success(request, 'Review added successfully!')
             return redirect('product_detail', product_id=product.id)
         else:
-            messages.error(request, 'Failed to add review, please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add review, please ensure the form is valid.'
+            )
     else:
         form = ProductReviewForm()
 
@@ -53,13 +56,12 @@ def add_review(request, product_id):
 
 
 @login_required
-def edit_review(request,product_id, product_review_id):
+def edit_review(request, product_id, product_review_id):
     """
     A view to return the edit product review page
     """
     review = get_object_or_404(ProductReview, pk=product_review_id)
     product = get_object_or_404(Product, id=product_id)
-    profile = get_object_or_404(UserProfile, user=request.user)
 
     # Check if the review author
     if request.user != review.user_profile.user:
@@ -101,7 +103,7 @@ def delete_review(request, product_review_id):
     review = get_object_or_404(ProductReview, pk=product_review_id)
 
     # Check if the user is the author of the review or an admin
-    if request.user != review.user_profile.user and not request.user.is_superuser:
+    if request.user != review.user_profile.user and not request.user.is_superuser:  # noqa
         messages.error(
             request,
             'You are not authorized to delete this review.'

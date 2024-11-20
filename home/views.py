@@ -4,6 +4,7 @@ from django.db.models import Q
 
 # Create your views here.
 
+
 def index(request):
     """
     A view to return the home page
