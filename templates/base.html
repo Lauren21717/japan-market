@@ -80,10 +80,10 @@
 
             <!-- Profile Icon -->
             <div class="dropdown">
-                <button class="btn" type="button" id="mobileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn" type="button" id="profileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user fa-lg"></i>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileMenuButton">
                     {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
                     <li><a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a></li>
@@ -105,10 +105,10 @@
 
             <!-- Mobile Menu Icon -->
             <div class="dropdown d-md-none">
-                <button class="btn" type="button" id="mobileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn" type="button" id="mobileMenuIconButton" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-bars fa-lg"></i>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="profileDropdown">
+                <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="mobileMenuIconButton">
                     <li><a class="dropdown-item" href="{% url 'home' %}">Home</a></li>
                     <li><a class="dropdown-item" href="{% url 'collection' %}">Collection</a></li>
                     <li><a class="dropdown-item" href="">About</a></li>

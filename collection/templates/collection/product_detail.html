@@ -83,11 +83,9 @@
                             <div class="input-group input-group-{{ product.id }}">
                                 <!-- Decrement Button -->
                                 <button class="decrement-qty btn blue-btn rounded-0 decrement-qty_{{ product.id }}"
-                                    data-item_id="{{ product.id }}"
-                                    {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
-                                    <div class="icon">
-                                        <i class="fa-solid fa-minus"></i>
-                                    </div>
+                                        data-item_id="{{ product.id }}"
+                                        {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
+                                    <i class="fa-solid fa-minus"></i>
                                 </button>
 
 
@@ -103,11 +101,9 @@
 
                                 <!-- Increment Button -->
                                 <button class="increment-qty btn blue-btn rounded-0 increment-qty_{{ product.id }}"
-                                    data-item_id="{{ product.id }}"
-                                    {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
-                                    <div class="icon">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </div>
+                                        data-item_id="{{ product.id }}"
+                                        {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
                             </div>
                         </div>
