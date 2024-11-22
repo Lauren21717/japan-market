@@ -68,7 +68,7 @@
         <ul class="navbar-link my-auto px-0 d-none d-md-flex">
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'collection' %}">Collection</a></li>
-            <li><a href="">About</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
 
@@ -111,7 +111,7 @@
                 <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="mobileMenuIconButton">
                     <li><a class="dropdown-item" href="{% url 'home' %}">Home</a></li>
                     <li><a class="dropdown-item" href="{% url 'collection' %}">Collection</a></li>
-                    <li><a class="dropdown-item" href="">About</a></li>
+                    <li><a class="dropdown-item" href="{% url 'about' %}">About</a></li>
                     <li><a class="dropdown-item" href="{% url 'contact' %}">Contact</a></li>
                 </ul>
             </div>
@@ -191,7 +191,7 @@
                     <ul class="list-unstyled footer-link">
                         <li><a class="dropdown-item quick-link" href="{% url 'home' %}">Home</a></li>
                         <li><a class="dropdown-item quick-link" href="{% url 'collection' %}">Collection</a></li>
-                        <li><a class="dropdown-item quick-link" href="#">About</a></li>
+                        <li><a class="dropdown-item quick-link" href="{% url 'about' %}">About</a></li>
                         <li><a class="dropdown-item quick-link" href="{% url 'contact' %}">Contact</a></li>
 
                     </ul>

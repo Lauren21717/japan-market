@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="container py-5">
+    <!-- About Section -->
+    <div class="my-5 row g-4 align-items-center">
+        <!-- About Photo -->
+        <div class="col-md-6">
+            <img class="img-fluid rounded" src="{% static 'images/bg-image/about_img.png' %}" alt="About Us">
+        </div>
+        <!-- About Text -->
+        <div class="col-md-6 text-muted">
+            <h3 class="text-dark pt-3 fw-bold">About Us</h3>
+            <p>
+                Japan Market was inspired by the rich traditions and innovative spirit of Japan, aiming to bring the
+                best of Japanese products to the world. Our vision started with a simple yet powerful idea: to create a
+                platform where customers can easily explore, appreciate, and purchase authentic Japanese goods from the
+                comfort of their homes.
+            </p>
+            <p>
+                Since our launch, we have worked diligently to curate a diverse collection of high-quality Japanese
+                products. From artisanal crafts and skincare to electronics and culinary essentials, our offerings are
+                handpicked from trusted Japanese brands and suppliers to cater to every taste and need.
+            </p>
+            <h3 class="text-dark pt-3 fw-bold">Our Mission</h3>
+            <p>
+                At Japan Market, our mission is to connect people with the essence of Japan through our carefully
+                selected products. We strive to provide a seamless shopping experience that blends tradition with
+                modernity, ensuring customers enjoy authenticity, convenience, and exceptional quality with every
+                purchase.
+            </p>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
