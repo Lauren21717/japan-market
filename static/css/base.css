@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #searchBar {
     display: none;
-    transition: all 0.2s east-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .search-bar-bg {
