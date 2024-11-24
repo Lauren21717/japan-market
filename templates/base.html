@@ -61,7 +61,8 @@
     <header class="container navbar-container">
         <!-- Logo -->
         <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="{% static 'images/logo/logo.png' %}" width="130" alt="Japan Market Logo">
+            <img src="{% static 'images/logo/logo.png' %}" width="130" 
+                alt="Japan Market Logo" loading="lazy">
         </a>
 
         <!-- NavLinks -->
@@ -74,13 +75,14 @@
 
         <div class="navbar-icon justify-content-end">
             <!-- Search Icon -->
-            <button type="button" class="btn" onclick="toggleSearch()">
+            <button type="button" class="btn" onclick="toggleSearch()" aria-label="Search Bar">
                 <i class="fas fa-search fa-lg"></i>
             </button>
 
             <!-- Profile Icon -->
             <div class="dropdown">
-                <button class="btn" type="button" id="profileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn" type="button" id="profileMenuButton" data-bs-toggle="dropdown" 
+                    aria-expanded="false" aria-label="Profile Icon">
                     <i class="fas fa-user fa-lg"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileMenuButton">
@@ -98,14 +100,15 @@
             </div>
 
             <!-- Cart Icon -->
-            <a href="{% url 'view_bag' %}" class="btn position-relative">
+            <a href="{% url 'view_bag' %}" class="btn position-relative" aria-label="Go to Shopping Bag">
                 <i class="fas fa-shopping-cart fa-lg"></i>
             </a>
 
 
             <!-- Mobile Menu Icon -->
             <div class="dropdown d-md-none">
-                <button class="btn" type="button" id="mobileMenuIconButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn" type="button" id="mobileMenuIconButton" data-bs-toggle="dropdown" 
+                    aria-expanded="false" aria-label="Manu Icon">
                     <i class="fas fa-bars fa-lg"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="mobileMenuIconButton">
@@ -128,14 +131,14 @@
                         <div class="input-group w-100 gap-2">
                             <input class="form-control  rounded" type="text" name="q" placeholder="Search our site">
                             <div class="input-group-append">
-                                <button class="form-control btn rounded" type="submit">
+                                <button class="form-control btn rounded" type="submit" aria-label="Search">
                                     <span class="icon">
                                         <i class="fas fa-search "></i>
                                     </span>
                                 </button>
                             </div>
                             <div class="col-auto d-flex align-items-center">
-                                <button class="btn rounded" onclick="toggleSearch()">
+                                <button class="btn rounded" onclick="toggleSearch()" aria-label="Cancel">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
@@ -193,7 +196,6 @@
                         <li><a class="dropdown-item quick-link" href="{% url 'collection' %}">Collection</a></li>
                         <li><a class="dropdown-item quick-link" href="{% url 'about' %}">About</a></li>
                         <li><a class="dropdown-item quick-link" href="{% url 'contact' %}">Contact</a></li>
-
                     </ul>
                 </div>
 
@@ -201,10 +203,10 @@
                 <div class="col-12 col-lg-4 mb-3">
                     <h5>Follow Us</h5>
                     <ul class="list-unstyled d-flex gap-4">
-                        <li><a target="_blank" href="https://www.facebook.com/" class="social-icon"><i class="fa-brands fa-facebook"></i></a></li>
-                        <li><a target="_blank" href="https://www.instagram.com/" class="social-icon"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a target="_blank" href="https://x.com/?lang=en" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a></li>
-                        <li><a target="_blank" href="https://www.youtube.com/" class="social-icon"><i class="fa-brands fa-youtube"></i></a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/" class="social-icon" aria-label="Facebook Link"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://www.instagram.com/" class="social-icon" aria-label="Instagram Link"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a target="_blank" href="https://x.com/?lang=en" class="social-icon" aria-label="X Link"><i class="fa-brands fa-x-twitter"></i></a></li>
+                        <li><a target="_blank" href="https://www.youtube.com/" class="social-icon" aria-label="Youtube Link"><i class="fa-brands fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>

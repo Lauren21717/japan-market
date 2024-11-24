@@ -83,7 +83,7 @@
                             <div class="input-group input-group-{{ product.id }}">
                                 <!-- Decrement Button -->
                                 <button class="decrement-qty btn blue-btn rounded-0 decrement-qty_{{ product.id }}"
-                                        data-item_id="{{ product.id }}"
+                                        data-item_id="{{ product.id }}"  aria-label="Decrement Button"
                                         {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
@@ -95,13 +95,14 @@
                                     id="id_qty_{{ product.id }}" 
                                     type="number"
                                     name="quantity" 
+                                    aria-label="quantity"
                                     value="1" min="1" max="99" 
                                     data-item_id="{{ product.id }}"
                                     {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
 
                                 <!-- Increment Button -->
                                 <button class="increment-qty btn blue-btn rounded-0 increment-qty_{{ product.id }}"
-                                        data-item_id="{{ product.id }}"
+                                        data-item_id="{{ product.id }}" aria-label="Increment Button"
                                         {% if product.has_sizes %}data-size="{{ size }}"{% endif %}>
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
@@ -168,8 +169,9 @@
     {% if validated_purchase and not already_reviewed %}
         <div class="row mt-1">
             <div class="col text-center">
-                <a href="{% url 'add_review' product.id %}" class="btn blue-btn py-2 px-4"> Add a
-                    review </a>
+                <a href="{% url 'add_review' product.id %}" class="btn blue-btn py-2 px-4"
+                    aria-label="Add a review"> 
+                    Add a review </a>
             </div>
         </div>
     {% endif %}

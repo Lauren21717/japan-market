@@ -128,10 +128,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-link {
     font-size: 0.9rem;
+    line-height: 1.5;
 }
 
-.quick-link:hover {
+.quick-link {
+    display: inline-block;
+    padding: 12px 16px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.quick-link:hover,
+.quick-link:focus {
     color: #F6DCB9;
+    border-radius: 4px;
 }
 
 .social-icon {
