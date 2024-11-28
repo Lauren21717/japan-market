@@ -166,5 +166,446 @@
             "is_special_offer": true,
             "discount_percentage": 30
         }
+    },
+    {
+        "pk": 9,
+        "model": "collection.product",
+        "fields": {
+            "name": "Green Tea Catnip Toy Set",
+            "description": "A set of cat toys inspired by Japanese tea culture. Includes two plush toys filled with organic catnip, shaped like a matcha bowl and a tea bag.",
+            "price": 12.99,
+            "category": 1,
+            "shop_by": 1,
+            "product_type": 2,
+            "rating": 4.7,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 80,
+            "sku": "PET-ACC-002",
+            "image": "catnip-toy-set.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 10,
+        "model": "collection.product",
+        "fields": {
+            "name": "Kose Softymo Speedy Cleansing Oil",
+            "description": "Lightweight Japanese cleansing oil that dissolves makeup and removes impurities while keeping the skin hydrated.",
+            "price": 14.99,
+            "category": 2,
+            "shop_by": 3,
+            "product_type": 4,
+            "rating": 4.8,
+            "has_sizes": true,
+            "sizes": ["230ml"],
+            "stock": 100,
+            "sku": "SKIN-FACE-003",
+            "image": "kose-cleansing-oil.webp",
+            "is_featured": false,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 11,
+        "model": "collection.product",
+        "fields": {
+            "name": "Sakura Pattern Origami Paper Set",
+            "description": "Delicate origami paper with sakura blossom patterns. Includes 100 sheets in assorted colors.",
+            "price": 9.99,
+            "category": 3,
+            "shop_by": 6,
+            "product_type": 6,
+            "rating": 4.8,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 120,
+            "sku": "ART-ORIG-002",
+            "image": "sakura-origami.webp",
+            "is_featured": false,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 12,
+        "model": "collection.product",
+        "fields": {
+            "name": "Kuretake Brush Pen - Black Ink",
+            "description": "High-quality Japanese brush pen for calligraphy and illustrations. Provides smooth, consistent strokes for professionals and beginners alike.",
+            "price": 7.99,
+            "category": 3,
+            "shop_by": 5,
+            "product_type": 5,
+            "rating": 4.9,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 200,
+            "sku": "ART-DRAW-002",
+            "image": "kuretake-brush-pen.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 13,
+        "model": "collection.product",
+        "fields": {
+            "name": "&honey Deep Moist Hair Treatment",
+            "description": "Luxurious Japanese hair treatment infused with honey and royal jelly to deeply nourish and hydrate dry, damaged hair.",
+            "price": 24.99,
+            "category": 4,
+            "shop_by": 4,
+            "product_type": 4,
+            "rating": 5.0,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 60,
+            "sku": "SPEC-NEW-002",
+            "image": "honey-hair-treatment.webp",
+            "is_featured": true,
+            "is_special_offer": true,
+            "discount_percentage": 15
+        }
+    },
+    {
+        "pk": 14,
+        "model": "collection.product",
+        "fields": {
+            "name": "Japanese Style Ceramic Dog Bowl",
+            "description": "Elegant ceramic bowl with a cherry blossom motif. Designed for dogs, it is dishwasher-safe and features a non-slip base.",
+            "price": 24.99,
+            "category": 1,
+            "shop_by": 2,
+            "product_type": 2,
+            "rating": 4.8,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 50,
+            "sku": "PET-ACC-003",
+            "image": "dog-bowl.webp",
+            "is_featured": false,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 15,
+        "model": "collection.product",
+        "fields": {
+            "name": "Natural Bamboo Dog Chew Stick - 3 Pack",
+            "description": "Eco-friendly and durable chew sticks made from natural bamboo. Keeps dogs entertained while promoting dental health.",
+            "price": 12.99,
+            "category": 1,
+            "shop_by": 2,
+            "product_type": 2,
+            "rating": 4.7,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 120,
+            "sku": "PET-ACC-004",
+            "image": "bamboo-chew-stick.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 16,
+        "model": "collection.product",
+        "fields": {
+            "name": "Dog Raincoat - Transparent with Floral Trim",
+            "description": "Lightweight, waterproof raincoat for dogs. Features a transparent design with floral trim, keeping dogs dry and stylish during rainy walks.",
+            "price": 19.99,
+            "category": 1,
+            "shop_by": 2,
+            "product_type": 2,
+            "rating": 4.8,
+            "has_sizes": true,
+            "sizes": ["Small", "Medium", "Large"],
+            "stock": 60,
+            "sku": "PET-ACC-005",
+            "image": "dog-raincoat.webp",
+            "is_featured": false,
+            "is_special_offer": true,
+            "discount_percentage": 10
+        }
+    },
+    {
+        "pk": 17,
+        "model": "collection.product",
+        "fields": {
+            "name": "Hada Labo Premium Hydrating Milk",
+            "description": "Intense hydration with five types of hyaluronic acid. Lightweight and non-greasy, perfect for locking in moisture for all skin types.",
+            "price": 17.99,
+            "category": 2,
+            "shop_by": 3,
+            "product_type": 4,
+            "rating": 4.8,
+            "has_sizes": true,
+            "sizes": ["140ml"],
+            "stock": 100,
+            "sku": "SKIN-FACE-004",
+            "image": "hada-labo-milk.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 18,
+        "model": "collection.product",
+        "fields": {
+            "name": "Biore UV Aqua Rich Watery Essence SPF 50+",
+            "description": "Award-winning sunscreen with a lightweight, watery texture. Provides strong UV protection while keeping skin hydrated and fresh.",
+            "price": 13.99,
+            "category": 2,
+            "shop_by": 3,
+            "product_type": 4,
+            "rating": 4.9,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 200,
+            "sku": "SKIN-FACE-005",
+            "image": "biore-uv.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 19,
+        "model": "collection.product",
+        "fields": {
+            "name": "Curel Intensive Moisture Cream",
+            "description": "Gentle, fragrance-free cream designed for sensitive and dry skin. Helps restore skin's natural barrier with ceramides.",
+            "price": 24.99,
+            "category": 2,
+            "shop_by": 3,
+            "product_type": 4,
+            "rating": 4.8,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 150,
+            "sku": "SKIN-FACE-006",
+            "image": "curel-cream.webp",
+            "is_featured": false,
+            "is_special_offer": true,
+            "discount_percentage": 15
+        }
+    },
+    {
+        "pk": 20,
+        "model": "collection.product",
+        "fields": {
+            "name": "Kose Sekkisei Lotion",
+            "description": "Brightening Japanese lotion infused with herbal extracts to hydrate and even out skin tone. Perfect for daily use.",
+            "price": 39.99,
+            "category": 2,
+            "shop_by": 3,
+            "product_type": 4,
+            "rating": 4.7,
+            "has_sizes": true,
+            "sizes": ["200ml", "360ml"],
+            "stock": 100,
+            "sku": "SKIN-FACE-007",
+            "image": "kose-sekkisei.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 21,
+        "model": "collection.product",
+        "fields": {
+            "name": "Yuskin A Moisturizing Cream",
+            "description": "All-purpose Japanese cream enriched with Vitamin E and glycerin. Excellent for dry skin on the face, hands, and body.",
+            "price": 14.99,
+            "category": 2,
+            "shop_by": 4,
+            "product_type": 4,
+            "rating": 4.9,
+            "has_sizes": true,
+            "sizes": ["120g"],
+            "stock": 100,
+            "sku": "SKIN-BODY-001",
+            "image": "yuskin-cream.webp",
+            "is_featured": false,
+            "is_special_offer": true,
+            "discount_percentage": 20
+        }
+    },
+    {
+        "pk": 22,
+        "model": "collection.product",
+        "fields": {
+            "name": "Shiro Ume Body Milk",
+            "description": "Luxurious Japanese body milk scented with white plum. Deeply nourishes and moisturizes skin for a silky finish.",
+            "price": 34.99,
+            "category": 2,
+            "shop_by": 4,
+            "product_type": 4,
+            "rating": 4.8,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 50,
+            "sku": "SKIN-BODY-002",
+            "image": "shiro-body-milk.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 23,
+        "model": "collection.product",
+        "fields": {
+            "name": "Bath Roman Sakura Scent Bath Salts",
+            "description": "Relaxing Japanese bath salts with a cherry blossom scent. Perfect for creating a soothing, spa-like experience at home.",
+            "price": 9.99,
+            "category": 2,
+            "shop_by": 4,
+            "product_type": 4,
+            "rating": 4.6,
+            "has_sizes": true,
+            "sizes": ["600g"],
+            "stock": 100,
+            "sku": "SKIN-BODY-003",
+            "image": "bath-roman.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 24,
+        "model": "collection.product",
+        "fields": {
+            "name": "Tsubaki Premium Repair Hair Mask",
+            "description": "Salon-quality Japanese hair mask enriched with Tsubaki oil. Repairs and nourishes damaged hair, leaving it shiny and smooth.",
+            "price": 24.99,
+            "category": 2,
+            "shop_by": 4,
+            "product_type": 4,
+            "rating": 4.8,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 80,
+            "sku": "SKIN-BODY-004",
+            "image": "tsubaki-mask.webp",
+            "is_featured": true,
+            "is_special_offer": true,
+            "discount_percentage": 10
+        }
+    },
+    {
+        "pk": 25,
+        "model": "collection.product",
+        "fields": {
+            "name": "Canmake Cream Cheek - Peach Dream",
+            "description": "Blendable and lightweight cream blush that gives a natural flush of color. Perfect for daily use and suitable for all skin types.",
+            "price": 8.99,
+            "category": 2,
+            "shop_by": 3,
+            "product_type": 4,
+            "rating": 4.7,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 150,
+            "sku": "MAKE-FACE-001",
+            "image": "canmake-cream-cheek.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 26,
+        "model": "collection.product",
+        "fields": {
+            "name": "Shiseido Perfect UV Protector SPF 50+",
+            "description": "High-performance sunscreen for face and body. Resistant to water, sweat, and sebum, providing long-lasting protection and hydration.",
+            "price": 35.99,
+            "category": 2,
+            "shop_by": 3,
+            "product_type": 4,
+            "rating": 4.8,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 80,
+            "sku": "SKIN-FACE-008",
+            "image": "shiseido-uv.webp",
+            "is_featured": false,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 27,
+        "model": "collection.product",
+        "fields": {
+            "name": "Etude House Play Color Eyes - Rose Wine",
+            "description": "A beautiful eyeshadow palette featuring 10 versatile shades inspired by romantic rose wine tones. Easy to blend and highly pigmented.",
+            "price": 22.99,
+            "category": 2,
+            "shop_by": 5,
+            "product_type": 4,
+            "rating": 4.8,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 120,
+            "sku": "MAKE-EYES-001",
+            "image": "etude-play-color.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
+    },
+    {
+        "pk": 28,
+        "model": "collection.product",
+        "fields": {
+            "name": "DHC Lip Cream",
+            "description": "Moisturizing lip balm enriched with olive oil and aloe. Keeps lips soft, smooth, and hydrated throughout the day.",
+            "price": 9.99,
+            "category": 2,
+            "shop_by": 3,
+            "product_type": 4,
+            "rating": 4.8,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 200,
+            "sku": "SKIN-LIPS-001",
+            "image": "dhc-lip-cream.webp",
+            "is_featured": false,
+            "is_special_offer": true,
+            "discount_percentage": 10
+        }
+    },
+    {
+        "pk": 29,
+        "model": "collection.product",
+        "fields": {
+            "name": "Shu Uemura Eyelash Curler",
+            "description": "Iconic eyelash curler designed for precision and comfort. Perfect for creating long-lasting curls without pinching.",
+            "price": 20.99,
+            "category": 2,
+            "shop_by": 5,
+            "product_type": 4,
+            "rating": 4.9,
+            "has_sizes": false,
+            "sizes": [],
+            "stock": 80,
+            "sku": "MAKE-TOOL-001",
+            "image": "shu-uemura-curler.webp",
+            "is_featured": true,
+            "is_special_offer": false,
+            "discount_percentage": 0
+        }
     }
 ]
