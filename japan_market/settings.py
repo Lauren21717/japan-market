@@ -33,6 +33,7 @@ DEBUG = os.environ.get("DEBUG", False)
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    '.render.com',
     os.environ.get('RENDER_EXTERNAL_HOSTNAME', '')
 ]
 
