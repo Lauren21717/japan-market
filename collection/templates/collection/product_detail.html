@@ -20,7 +20,7 @@
                 {% if product.image %}
                 <img class="img-fluid" id="main-product-image" src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
-                <img class="img-fluid" id="main-product-image" src="{{ MEDIA_URL }}no-image.png"
+                <img class="img-fluid" id="main-product-image" src="{% static 'images/no-image.png' %}"
                     alt="{{ product.name }}">
                 {% endif %}
             </div>

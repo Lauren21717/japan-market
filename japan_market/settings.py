@@ -167,6 +167,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Static & Media Files with AWS S3
 if 'USE_AWS' in os.environ:
     AWS_STORAGE_BUCKET_NAME = 'japan-market-ly'

@@ -41,7 +41,7 @@
                         {% if item.product.image %}
                             <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid rounded">
                         {% else %}
-                            <img src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}" class="img-fluid rounded">
+                            <img src="{% static 'images/no-image.png' %}" alt="{{ item.product.name }}" class="img-fluid rounded">
                         {% endif %}
                     </div>
                     <div class="col-7">

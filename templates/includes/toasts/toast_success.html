@@ -31,7 +31,7 @@
                             {% if item.product.image %}
                                 <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="rounded">
                             {% else %}
-                                <img src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}" class="rounded">
+                                <img src="{% static 'images/no-image.png' %}" alt="{{ item.product.name }}" class="rounded">
                             {% endif %}
                         </div>
                         <div class="cart-item-details flex-grow-1">

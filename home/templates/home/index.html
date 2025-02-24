@@ -47,7 +47,7 @@
                         <img class="img-fluid hover-scale transition" src="{{ product.image.url }}"
                             alt="{{ product.name }}">
                         {% else %}
-                        <img class="img-fluid hover-scale transition" src="{{ MEDIA_URL }}no-image.png"
+                        <img class="img-fluid hover-scale transition" src="{% static 'images/no-image.png' %}"
                             alt="{{ product.name }}">
                         {% endif %}
 
@@ -103,7 +103,7 @@
                                                 {% if product.image %}
                                                 <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                                 {% else %}
-                                                <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                                                <img class="img-fluid" src="{% static 'images/no-image.png'%}" alt="{{ product.name }}">
                                                 {% endif %}
                                             </div>
 
